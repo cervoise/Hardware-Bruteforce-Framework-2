@@ -17,7 +17,7 @@ class KeyboardTest:
 #Ajouter une verification que l'arduino est up dans le __init__
 class Keyboard:
 	def __init__(self):
-		self.path = "./main"
+		self.path = "./i2c-com-with-duino"
 		return None
 		
 	def press(self, string, delay):
