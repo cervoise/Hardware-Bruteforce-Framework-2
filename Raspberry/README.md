@@ -1,4 +1,4 @@
 - HBF.py: runs the attack, can run a analysis after all
-- Analysis.py: runs the analysis after an attack
+- Analyze-attack.py: runs the analysis after an attack
 - db: contains code examples for specific or generic targets
-- screenshots: folder to screenshots with the webcam
+- screenshots: folder with screenshots from the webcam
