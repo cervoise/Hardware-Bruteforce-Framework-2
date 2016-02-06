@@ -14,7 +14,7 @@ Installation (Pi part):
 - reboot
 - git clone https://github.com/cervoise/Hardware-Bruteforce-Framework-2.git
 - cd Hardware-Bruteforce-Framework-2/Raspberry
-- gcc main.c -o main
+- gcc i2c-com-with-duino.c -o i2c-com-with-duino
 
 Installation (Arduino/Teensy part):
 - push the Arduino project from Arduino folder.
