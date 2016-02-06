@@ -1,0 +1,23 @@
+#About this file
+
+This file give some tests runned in order to determine the faster way to do some tasks.
+
+#Webcam
+
+Using a Raspberry Pi Camera on a Raspberry Pi B+ with fresh Raspian
+
+///
+
+Using fswebcam with an Logitech Pro 9000 USB Webcam
+
+///
+
+#Analysis
+
+Running an analysis with two control samples and seven passwords on a Raspberry Pi B+ with fresh Raspian
+
+///
+
+Running an analysis with two control samples and seven passwords on a Dell Latitute ... (i7/8 Go Ram)
+
+///
