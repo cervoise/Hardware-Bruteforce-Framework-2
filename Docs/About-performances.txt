@@ -6,11 +6,43 @@ This file give some tests runned in order to determine the faster way to do some
 
 Using a Raspberry Pi Camera on a Raspberry Pi B+ with fresh Raspian
 
-///
+pi@raspberrypi:~ $ time raspistill -n -o test.png
 
-Using fswebcam with an Logitech Pro 9000 USB Webcam
+real    0m6.534s
+user    0m0.050s
+sys     0m0.080s
 
-///
+Using fswebcam with an Logitech Pro 9000 USB Webcam. Note: the first run is slower than the others so we run two capture
+
+pi@raspberrypi:~ $ time fswebcam test.jpg
+--- Opening /dev/video0...
+Trying source module v4l2...
+/dev/video0 opened.
+No input was specified, using the first.
+Adjusting resolution from 384x288 to 352x288.
+--- Capturing frame...
+Captured frame in 0.00 seconds.
+--- Processing captured image...
+Writing JPEG image to 'test.jpg'.
+
+real    0m1.327s
+user    0m0.250s
+sys     0m0.110s
+pi@raspberrypi:~ $ time fswebcam test.jpg
+--- Opening /dev/video0...
+Trying source module v4l2...
+/dev/video0 opened.
+No input was specified, using the first.
+Adjusting resolution from 384x288 to 352x288.
+--- Capturing frame...
+Captured frame in 0.00 seconds.
+--- Processing captured image...
+Writing JPEG image to 'test.jpg'.
+
+real    0m0.777s
+user    0m0.230s
+sys     0m0.080s
+
 
 #Analysis
 
