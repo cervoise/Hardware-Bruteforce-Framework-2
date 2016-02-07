@@ -1,0 +1,87 @@
+Raspberry Pi Camera - Raspberry Pi B+ with fresh Raspian (2015-11-21-raspbian-jessie-lite)
+
+pi@raspberrypi:~ $ time raspistill -n -o test.jpg
+
+real    0m6.534s
+user    0m0.050s
+sys     0m0.080s
+
+---
+
+Raspberry Pi Camera - Raspberry Pi B with fresh Raspian (2015-11-21-raspbian-jessie-lite)
+
+pi@raspberrypi:~ $ time raspistill -n -o test.jpg
+
+real	0m6.159s
+user	0m0.010s
+sys	0m0.120s
+
+---
+
+Logitech Pro 9000 USB Webcam Raspberry Pi B+ with fresh Raspian (2015-11-21-raspbian-jessie-lite)
+
+Note: the first run is slower than the others so we run two capture
+
+pi@raspberrypi:~ $ time fswebcam test.jpg
+--- Opening /dev/video0...
+Trying source module v4l2...
+/dev/video0 opened.
+No input was specified, using the first.
+Adjusting resolution from 384x288 to 352x288.
+--- Capturing frame...
+Captured frame in 0.00 seconds.
+--- Processing captured image...
+Writing JPEG image to 'test.jpg'.
+
+real    0m1.327s
+user    0m0.250s
+sys     0m0.110s
+pi@raspberrypi:~ $ time fswebcam test.jpg
+--- Opening /dev/video0...
+Trying source module v4l2...
+/dev/video0 opened.
+No input was specified, using the first.
+Adjusting resolution from 384x288 to 352x288.
+--- Capturing frame...
+Captured frame in 0.00 seconds.
+--- Processing captured image...
+Writing JPEG image to 'test.jpg'.
+
+real    0m0.777s
+user    0m0.230s
+sys     0m0.080s
+
+---
+
+Logitech Pro 9000 USB Webcam Raspberry Pi B+ with fresh Raspian (2015-11-21-raspbian-jessie-lite)
+
+Note: the first run is slower than the others so we run two capture
+
+pi@raspberrypi:~ $ time fswebcam test.jpg
+--- Opening /dev/video0...
+Trying source module v4l2...
+/dev/video0 opened.
+No input was specified, using the first.
+Adjusting resolution from 384x288 to 352x288.
+--- Capturing frame...
+Captured frame in 0.00 seconds.
+--- Processing captured image...
+Writing JPEG image to 'test.jpg'.
+
+real	0m2.047s
+user	0m0.890s
+sys	0m0.150s
+pi@raspberrypi:~ $ time fswebcam test2.jpg
+--- Opening /dev/video0...
+Trying source module v4l2...
+/dev/video0 opened.
+No input was specified, using the first.
+Adjusting resolution from 384x288 to 352x288.
+--- Capturing frame...
+Captured frame in 0.00 seconds.
+--- Processing captured image...
+Writing JPEG image to 'test2.jpg'.
+
+real	0m0.778s
+user	0m0.290s
+sys	0m0.010s
