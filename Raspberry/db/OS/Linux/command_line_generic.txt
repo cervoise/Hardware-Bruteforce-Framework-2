@@ -1,0 +1,8 @@
+delayPassword 100
+login
+enter
+delay 1000
+password
+enter
+delay 2000
+screenshot

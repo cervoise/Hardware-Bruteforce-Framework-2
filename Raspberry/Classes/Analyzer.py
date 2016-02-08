@@ -1,5 +1,6 @@
 import commands
-import os.path 
+import os
+import sys
 
 class Analyzer:
 	def __init__(self, path_to_samples, path_to_screenshots, passwords_file):
@@ -16,7 +17,11 @@ class Analyzer:
 	        for password in self.passwords:
 	        	temp_samples = []
         		for sample in self.screenshots_samples:
-        			temp_samples.append(self.compare(path_to_screenshots + '/' + password + ".jpg", path_to_samples + '/' + sample))
+        			if os.path.isfile(path_to_screenshots + '/' + password + ".jpg"):
+	        			temp_samples.append(self.compare(path_to_screenshots + '/' + password + ".jpg", path_to_samples + '/' + sample))
+	        		else:
+	        			print path_to_screenshots + '/' + password + ".jpg does not exist"
+	        			sys.exit(1)
         		self.comparaisons.append(Comparaison(password, temp_samples))
 	
 	def compare(self, sample, screenshot):
@@ -76,6 +81,8 @@ class Analyzer:
         	csv_file = open(path_to_csv, 'w+')
         	csv_file.write(self.getCsv())
         	csv_file.close()
+        	
+        	os.remove('NULL')
         
 class Comparaison:
 	def __init__(self, password, samples_array):

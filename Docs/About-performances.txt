@@ -12,10 +12,4 @@ Using fswebcam with an Logitech Pro 9000 USB Webcam on a Raspberry Pi B+/B with 
 
 #Analysis
 
-Running an analysis with two control samples and seven passwords on a Raspberry Pi B+ with fresh Raspian
-
-///
-
-Running an analysis with two control samples and seven passwords on a Dell Latitute ... (i7/8 Go Ram)
-
-///
+Running an analysis with two control samples and seven passwords on a Raspberry Pi B+ with fresh Raspian tooks nearly 8 sec. On a laptop (i7/8 GB Ram) it tooks between 0.3 and 0.9 sec.

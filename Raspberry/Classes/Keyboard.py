@@ -1,7 +1,9 @@
 import os
+import os.path
+import sys
 import time
 
-#Pour du debug, pas besoin d'arduino
+#For test and debug
 class KeyboardTest:
 	def __init__(self):
 		return None
@@ -9,21 +11,24 @@ class KeyboardTest:
 	def press(self, string, delay):
 		for letter in string:
 			print letter
-			time.sleep(delay)
+			time.sleep(delay/1000)
 		
 	def pressSpecial(self, special):
 		print special
 
-#Ajouter une verification que l'arduino est up dans le __init__
+#Check if Arduino is up and if i2c... exists in __init__
 class Keyboard:
 	def __init__(self):
 		self.path = "./i2c-com-with-duino"
+		if os.path.isfile(self.path) is False:
+			print "Program for communication with Arduino is not set"
+			sys.exit(1)
 		return None
 		
 	def press(self, string, delay):
 		for letter in string:
 			os.system(self.path + " " + str(ord(letter)))
-			time.sleep(delay)
+			time.sleep(delay/1000)
 		
 	def pressSpecial(self, special):
 		if special == "enter":

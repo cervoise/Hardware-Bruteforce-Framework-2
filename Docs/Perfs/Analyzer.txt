@@ -1,0 +1,23 @@
+Raspberry Pi B+ with Fresh Raspian (2015-11-21-raspbian-jessie-lite)
+
+pi@raspberrypi:~/Raspberry $ time python Analyze-attack.py -s ../screenshots/ -c ../temoins -p ../passwords.txt -o ../analyze.csv
+
+real	0m7.961s
+user	0m7.050s
+sys	0m0.730s
+
+---
+
+Dell Core i7 - Ram 8 Gb with Debian
+
+$ time python Analyze-attack.py -s ../screenshots/ -c ../control-paths -p ../pass.txt
+
+real	0m0.289s
+user	0m0.324s
+sys	0m0.044s
+
+$ time python Analyze-attack.py -s ../screenshots/ -c ../control-paths -p ../pass.txt
+
+real	0m0.826s
+user	0m0.356s
+sys	0m0.032s
