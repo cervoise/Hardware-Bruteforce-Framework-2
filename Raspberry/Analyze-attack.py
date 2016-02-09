@@ -11,4 +11,3 @@ args = vars(parser.parse_args())
 
 result = Analyzer.Analyzer(args['controlSamples'], args['screenshots'], args['passwordsFile'])
 result.writeCsv(args['output'])
-
