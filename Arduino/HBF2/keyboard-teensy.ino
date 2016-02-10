@@ -8,7 +8,7 @@
 
   void typeKey(int key)
   {
-    Keyboard.set_key1(key);
+    Keyboard.set_key1(char(key));
     Keyboard.send_now();
     Keyboard.set_key1(0);
     Keyboard.send_now();
