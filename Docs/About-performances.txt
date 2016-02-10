@@ -1,6 +1,6 @@
 #About this file
 
-This file give some tests runned in order to determine the faster way to do some tasks.
+This file gives some tests runned in order to determine the faster way to do some tasks.
 
 Details are in Perfs/
 

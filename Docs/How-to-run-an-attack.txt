@@ -1,28 +1,28 @@
 #Firt
 
-Be sure that you do not have any alternative, for example, on a Windows Tablet, the avalability to add an Ethernet port over USB and to run a wordlist attack over RDP (hydra does that).
+Be sure that you do not have any alternative, for example, on a Windows Tablet, the availability to add an Ethernet port over USB and to run a wordlist attack over RDP (hydra does that).
 
 #Prepare the attack
 
-First you need to try few passwords manually. Plug a keyboard on your target and analyze what is needed in order to do a password try (and failed) and to come back to the initial state.
+First you need to try a few passwords manually. Plug a keyboard on your target and analyze what is needed in order to do a password try (and failed) and to come back to the initial state.
 
 For example, on Dell Latitude UEFI, you need to :
 - enter the password, 
 - then carriage return,
 - wait a little,
 - a message box with a bad password message appears, another carriage return for closing it,
-- your back to the initial state.
+- you're back to the initial state.
 
-You have to transcrive that in a specific langage. The keywords are:
+You have to transcribe that in a specific langage. The keywords are:
 - delay XXXX: wait XXXX ms
 - login: type the login
-- password: the framework type the password
+- password: the framework types the password
 - enter/backspace/escape/tabulation: type the special key
-- screenshot: do a screeshot using a webcam
+- screenshot: do a screenshot using a webcam
 
 #Prepare the attack when the target is locking every n tries
 
-#Prepare the attack (only if your doing screenshots)
+#Prepare the attack (only if you're doing screenshots)
 
 If you plan to take screenshot to each try, put your target in a dark place, where the luminosity will not change. For example in a box.
 
@@ -32,7 +32,7 @@ Then you need to take picture of failed tries. You may have several pictures, fo
 
 #Run the analysis
 
-You can run the analysis after the attack on the Pi with ... This can took a lot of time (....). So you may wants to run the analysis on another laptop.
+You can run the analysis after the attack on the Pi with ... This can took a lot of time (....). So you may want to run the analysis on another laptop.
 
 Export the screenshot files, and run ...
 

@@ -1,6 +1,6 @@
 # Hardware-Bruteforce-Framework-2
 
-Actually under developpement.
+Currently under developpement.
 
 Needs: 
 - a RaspberryPi or something equivalent supporting Linux and i2c
