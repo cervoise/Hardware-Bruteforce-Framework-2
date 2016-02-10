@@ -18,3 +18,20 @@ Installation (Pi part):
 
 Installation (Arduino/Teensy part):
 - push the Arduino project from Arduino folder.
+
+Wiring:
+- Connect your Raspberry Pi and Teensy/Arduino SDA, SCL, and GND pins together
+
+RPI B & Leonardo:
+
+![](Docs/Scheme/Leonardo-RaspberryB_bb_thumb.png)
+
+RPI B+ & Leonardo:
+
+![](Docs/Scheme/wiring_RPI-Leonardo_thumb.png)
+
+RPI B+ & Teensy 3.0:
+
+![](Docs/Scheme/wiring_RPI-Teensy30_thumb.png)
+
+
