@@ -10,6 +10,7 @@ from Classes import Attack
 from Classes import Keyboard
 from Classes import Wordlist
 
+def main():
 parser = argparse.ArgumentParser(description='HBF Description')
 
 parser.add_argument('pattern', help='Attack pattern file')
@@ -32,3 +33,6 @@ if args['screenshots'] != '' and args['noScreenshots'] is True:
 
 HBF = Attack.Attack(args['pattern'], args['loginsFile'], args['passwordsFile'], args['screenshots'], args['noScreenshots'])
 HBF.doAttack()
+
+if __name__ == "__main__":
+    main()

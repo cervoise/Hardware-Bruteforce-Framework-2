@@ -19,21 +19,47 @@ class Wordlist(EmptyWordlist):
 		for line in open(path_to_wordlist).readlines():
 			self.wordlist_array.append(line.rstrip())
 		
-#ToDo
-class BruteforceMultipleSize():
-	def __init(self, chars_array, size_min, size_max):
-		return ""
-	
-	def getNext(self):
-		return ""
+class BruteforceMultipleSize:
+	def __init__(self, charset_name, size_min, size_max):
+		self.charset = self.getCharset(charset_name)
+		self.BF = Bruteforce(self.charset, size_min)
+		self.size = size_min
+		self.max = size_max
 		
+	def getCharset(self, charset_name):
+		if charset_name == 'numeric':
+			return "0123456789"
+		elif charset_name == 'alphalower':
+			return "abcdefghijklmnopqrstuvwxyz"
+		elif charset_name == 'alphaupper':
+			return "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+		elif charset_name == 'alpha':
+			return "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+		elif charset_name == 'alphanumericlower':
+			return "abcdefghijklmnopqrstuvwxyz0123456789"
+		elif charset_name == 'alphanumericupper':
+			return "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
+		elif charset_name == 'alphanumeric':
+			return "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
+			
+	def getNext(self):
+		if self.BF.hasNext() is False:
+			self.size += 1
+			self.BF = Bruteforce(self.charset, self.size)
+		
+		return self.BF.getNext()
+			
 	def hasNext(self):
-		return ""
+		if self.BF.hasNext():
+			return True
+		else:
+			return self.size < self.max
 
 class Bruteforce:
 
 	# Brute-force string generation
 	# Copyright (C) 2011 Radek Pazdera
+	# From https://gist.github.com/pazdera/1121315
 	# Turned into a Class by Antoine Cervoise 2016
 
 	# This program is free software: you can redistribute it and/or modify

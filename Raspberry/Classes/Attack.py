@@ -32,10 +32,8 @@ class Attack:
 
 		if self.pattern.usePassword():
 			self.passwords = Wordlist.Wordlist(path_to_passwords)
-		#else:
-		#	self.passwordspasswords = Bruteforce
-
-		
+		elif self.pattern.useBruteforce():
+			self.passwords = Wordlist.BruteforceMultipleSize(self.pattern.getBruteforceCharset(), self.pattern.getBruteforceSizeMin(), self.pattern.getBruteforceSizeMax())
 			
 	def doAttack(self):
 		if self.pattern.useWait() is not None:
