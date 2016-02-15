@@ -1,5 +1,7 @@
 #if defined(__AVR_ATmega32U4__)
 
+  #define WHO_AM_I          0xA1 //Leonardo
+
   void keyboardStart()
   {
      Keyboard.begin();
@@ -30,6 +32,11 @@
   void typeEscape()
   {
      typeKey(KEY_ESC);
+  }
+
+  int whoami()
+  {
+    return WHO_AM_I;
   }
   
 #endif
