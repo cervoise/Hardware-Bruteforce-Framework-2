@@ -1,5 +1,7 @@
 Usage examples:
 
+python send2arduino.py -w
+
 //CR
 python send2arduino.py -c 13
 

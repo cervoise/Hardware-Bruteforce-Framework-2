@@ -1,3 +1,11 @@
+
+//Set to true if you intend to use a Teensy(++) 2.0 as a keyboard in a bios
+#define TEENSY_LTE20_BIOS true
+
+// Your Arduino/teensy slave i2c address
+#define SLAVE_ADDRESS     0x04
+
+
 #if defined(__AVR_ATmega32U4__)
   #include <Mouse.h>
   #include <Keyboard.h>
@@ -5,10 +13,10 @@
 
 #include <Wire.h>
 
-#define SLAVE_ADDRESS     0x04
 #define CMD_SEND_STRING   0x01
 #define CMD_SEND_CHAR     0x02
 #define CMD_SEND_MOUSE    0x03
+#define CMD_WHO           0x04
 
 #define BUFFER_LEN        10
 int buffer[BUFFER_LEN];
@@ -47,14 +55,19 @@ void receiveData(int byteCount){
     }
   }
 
+  // First byte received is the command
   switch(buffer[0]) {
+    case CMD_WHO:
+      ack = whoami();
+      break;
+    
     case CMD_SEND_STRING:
       char string[BUFFER_LEN];
       for(int i = 1 ; i < n ; i++) {
         string[i-1] = char(buffer[i]);
       }
       string[n-1] = '\0';
-      Keyboard.print(string);
+      typeString(string); 
       ack = 1;
       break;
     
@@ -64,7 +77,7 @@ void receiveData(int byteCount){
       break;
     
     case CMD_SEND_MOUSE:
-      Mouse.move(buffer[2], buffer[1]);
+      moveMouse(buffer[2], buffer[1]);
       ack = 1;
       break;
   }
@@ -94,5 +107,5 @@ void type_char(int number) {
 
 // callback for sending data
 void sendData() {
-  Wire.send(ack);
+  Wire.write(ack);
 }
