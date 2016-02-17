@@ -99,5 +99,5 @@ void type_char(int number) {
 
 // callback for sending data
 void sendData() {
-  Wire.send(ack);
+  Wire.write(ack);
 }
