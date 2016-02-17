@@ -1,7 +1,8 @@
 import os
-import os.path
 import sys
 import time
+
+import I2C
 
 #For test and debug
 class KeyboardTest:
@@ -16,28 +17,37 @@ class KeyboardTest:
 	def pressSpecial(self, special):
 		print special
 
-#Check if Arduino is up and if i2c... exists in __init__
-class Keyboard:
+class MouseAndKeyboard():
 	def __init__(self):
-		self.path = "./i2c-com-with-duino"
-		if os.path.isfile(self.path) is False:
-			print "Program for communication with Arduino is not set"
+		#Adjust in order to made address change easier !!!
+		self.i2cConnection = I2C.I2C(0x04)
+		#Check if there is an Arduino
+		if self.i2cConnection.testConnection() is False:
+			print "Something found on I2C, but no Arduino with the good sketch"
 			sys.exit(1)
-		return None
-		
+			
 	def press(self, string, delay):
 		for letter in string:
-			os.system(self.path + " " + str(ord(letter)))
-			time.sleep(delay/1000)
+			#os.system(self.path + " " + str(ord(letter)))
+			if self.isUnicode(letter) and not self.i2cConnection.canUnicode():
+				print "This Arduino cannot handle unicode char"
+			else:
+				self.i2cConnection.sendChar(letter)
+				time.sleep(delay/1000)
 		
 	def pressSpecial(self, special):
 		if special == "enter":
-			special_value = str(13)
+			special_value = 13
 		elif special == "escape":
-			special_value = str(27)
+			special_value = 27
 		elif special == "tabulation":
-			special_value = str(9)
+			special_value = 9
 		elif special == "backspace":
-			special_value = str(8)
+			special_value = 8
 		
-		os.system(self.path + " " + special_value)
+		#os.system(self.path + " " + special_value)
+		self.i2cConnection.sendSpecialChar(special_value)
+		
+	#toimplement
+	def isUnicode(self, char):
+		return False

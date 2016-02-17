@@ -5,9 +5,12 @@ import time
 import Keyboard
 
 class Action:
-	def __init__(self, path_to_pattern, path_to_screenshots='', no_screenshots=False):
-		#self.keyboard = Keyboard.KeyboardTest()
-		self.keyboard = Keyboard.Keyboard()
+	def __init__(self, path_to_pattern, path_to_screenshots='', no_screenshots=False, DEBUG=False):
+		
+		if DEBUG:
+			self.keyboard = Keyboard.KeyboardTest()
+		else:
+			self.keyboard = Keyboard.MouseAndKeyboard()
 		
 		self.use_login = False
 		self.last_login = ''
@@ -37,12 +40,12 @@ class Action:
 					self.actions_array.append(line.rstrip())
 					
 				#Var in order to check if pattern is good with command line
-				self.use_login = self.use_login or line.rstrip().lower() == "login" or line.rstrip().lower().split(' ')[0] == login
+				self.use_login = self.use_login or line.rstrip().lower() == "login" or line.rstrip().lower().split(' ')[0] == "login"
 				self.check_password = self.check_password or line.rstrip().lower() == "password"
 				self.use_screenshot = self.check_password or line.rstrip().lower() == "screenshot"
 				
 				#Check for login delay
-				if line.rstrip().lower().split(' ')[0] == login and len(line.rstrip().lower().split(' ')) == 2:
+				if line.rstrip().lower().split(' ')[0] == "login" and len(line.rstrip().lower().split(' ')) == 2:
 					self.new_login_delay = line.rstrip().lower().split(' ')[1]
 					
 				#Check for delaypassword
