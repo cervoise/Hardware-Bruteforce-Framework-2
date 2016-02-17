@@ -1,5 +1,4 @@
 #if defined(__MK20DX128__) or defined(__MK20DX256__) or (defined(__AVR_AT90USB1286__) and not TEENSY_LTE20_BIOS)
-//Pas encore utilisable, s'assurer que l'on peut entrer un entier pour tapper une lettre
 
   /*
    0xB1 : 'Teensy 1.0', 
