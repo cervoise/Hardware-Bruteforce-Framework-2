@@ -7,6 +7,11 @@
      Keyboard.begin();
   }
 
+  void typeString(char *s)
+  {
+    Keyboard.print(s);
+  }
+  
   void typeKey(int key)
   {
      Keyboard.press(key);
@@ -32,6 +37,11 @@
   void typeEscape()
   {
      typeKey(KEY_ESC);
+  }
+
+  void moveMouse(int x, int y)
+  {
+    Mouse.move(buffer[2], buffer[1]);
   }
 
   int whoami()

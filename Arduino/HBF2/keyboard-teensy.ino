@@ -1,4 +1,4 @@
-#if defined(__MK20DX128__) or defined(__MK20DX256__)
+#if defined(__MK20DX128__) or defined(__MK20DX256__) or (defined(__AVR_AT90USB1286__) and not TEENSY_LTE20_BIOS)
 //Pas encore utilisable, s'assurer que l'on peut entrer un entier pour tapper une lettre
 
   /*
@@ -11,11 +11,16 @@
    0xB7 : 'Teensy LC',
    0xB8 : 'Teensy 3.2',
   */
-  #define WHO_AM_I          0xB5
+  #define WHO_AM_I          0xB1
   
   void keyboardStart()
   {
      Keyboard.begin();
+  }
+
+  void typeString(char *s)
+  {
+    Keyboard.print(s);
   }
 
   void typeKey(int key)
@@ -44,6 +49,11 @@
   void typeEscape()
   {
      typeKey(KEY_ESC);
+  }
+  
+  void moveMouse(int x, int y)
+  {
+    Mouse.move(buffer[2], buffer[1]);
   }
 
   int whoami()
