@@ -10,7 +10,7 @@ from Classes import Attack
 from Classes import Keyboard
 from Classes import Wordlist
 
-DEBUG = False
+#DEBUG = False
 
 def main():
 	global DEBUG
@@ -22,7 +22,8 @@ def main():
 	parser.add_argument('-l','--loginsFile', help='Logins file (one login by line)', default='', required=False)
 	parser.add_argument('-s','--screenshots', help='Directory to put the screenshots (created if don\'t exist)', default='', required=False)
 	parser.add_argument('--noScreenshots', help='Ignore screenshot command', action='store_true')
-
+	parser.add_argument('--debug', help='use for debugging ant test', action='store_true')
+	
 	args = vars(parser.parse_args())
 
 	if args['screenshots'] != '' and args['noScreenshots'] is True:
@@ -33,7 +34,7 @@ def main():
 	#Read ../readme.txt before run
 	#Edit attack in order to add -d
 
-	HBF = Attack.Attack(args['pattern'], args['loginsFile'], args['passwordsFile'], args['screenshots'], args['noScreenshots'], DEBUG)
+	HBF = Attack.Attack(args['pattern'], args['loginsFile'], args['passwordsFile'], args['screenshots'], args['noScreenshots'], args['debug'])
 	HBF.doAttack()
 
 if __name__ == "__main__":
