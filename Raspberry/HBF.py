@@ -10,8 +10,6 @@ from Classes import Attack
 from Classes import Keyboard
 from Classes import Wordlist
 
-#DEBUG = False
-
 def main():
 	global DEBUG
 
@@ -33,7 +31,7 @@ def main():
 	#Add to help/usage: 
 	#Read ../readme.txt before run
 	#Edit attack in order to add -d
-
+	
 	HBF = Attack.Attack(args['pattern'], args['loginsFile'], args['passwordsFile'], args['screenshots'], args['noScreenshots'], args['debug'])
 	HBF.doAttack()
 

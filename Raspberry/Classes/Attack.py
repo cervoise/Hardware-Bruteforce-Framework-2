@@ -5,7 +5,7 @@ import Wordlist
 
 class Attack:
 	def __init__(self, path_to_pattern, path_to_logins = "", path_to_passwords = "", path_to_screenshots = "", no_screenshots=False, DEBUG=False):
-		
+
 		self.pattern = Action.Action(path_to_pattern, path_to_screenshots, no_screenshots, DEBUG)
 		
 		#Check if pattern is good with command line

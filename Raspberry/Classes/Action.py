@@ -54,16 +54,18 @@ class Action:
 				
 				#Check for wait
 				if line.rstrip().lower().split(' ')[0] == "wait":
-					try:
-						if path_to_pattern.rpartition('/')[0] != '':
-							wait_file = path_to_pattern.rpartition('/')[0] + '/' + line.rstrip().split(' ')[1]
-						else:
-							wait_file = line.rstrip().split(' ')[1]
-						self.wait = Action(wait_file)
-						self.attempt = int(line.rstrip().lower().split(' ')[2])
-					except:
-						print "Wait function in " + path_to_pattern + " is not correct"
+					if len(line.rstrip().split(' ')) != 3:
+						print "Wait instruction is not correct: wait file attempt"
 						sys.exit(1)
+					if path_to_pattern.rpartition('/')[0] != '':
+						wait_file = path_to_pattern.rpartition('/')[0] + '/' + line.rstrip().split(' ')[1]
+					else:
+						wait_file = line.rstrip().split(' ')[1]
+						if os.path.isfile(wait_file) is False:
+							print "Wait function in " + path_to_pattern + " is not correct"
+							sys.exit(1)
+						self.wait = Action(wait_file, path_to_screenshots, no_screenshots, DEBUG)
+						self.attempt = int(line.rstrip().lower().split(' ')[2])				
 						
 				#Check for bruteforce
 				if line.rstrip().lower().split(' ')[0] == "bruteforce":
@@ -89,7 +91,7 @@ class Action:
 		#Check if pattern is good with command line
 		if self.check_password and self.bruteforce:
 			print "Error, cannot use a password and bruteforce"
-			sys.exit(1)
+			sys.exit(1)		
 	
 	def doActions(self, password="", login="", trial=0):
 		for i in range(0, len(self.actions_array)):
