@@ -3,6 +3,7 @@ import sys
 import time
 
 import Keyboard
+import WOL
 
 class Action:
 	def __init__(self, path_to_pattern, path_to_screenshots='', no_screenshots=False, DEBUG=False):
@@ -118,6 +119,8 @@ class Action:
 			elif value.split(' ')[0] == 'wait':
 				if trial % self.attempt == 0:
 					self.wait.doActions()
+			elif value.split(' ')[0] == 'wol':
+				WOL.WOL(value.split(' ')[1])
 					
 		#If login changed since last try, we add a delay
 
