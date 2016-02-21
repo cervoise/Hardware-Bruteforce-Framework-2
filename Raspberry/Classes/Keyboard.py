@@ -2,8 +2,6 @@ import os
 import sys
 import time
 
-import I2C
-
 #For test and debug
 class KeyboardTest:
 	def __init__(self):
@@ -19,6 +17,7 @@ class KeyboardTest:
 
 class MouseAndKeyboard():
 	def __init__(self):
+		import I2C
 		#Adjust in order to made address change easier !!!
 		self.i2cConnection = I2C.I2C(0x04)
 		#Check if there is an Arduino

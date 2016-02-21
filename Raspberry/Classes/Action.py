@@ -3,7 +3,6 @@ import sys
 import time
 
 import Keyboard
-import WOL
 
 class Action:
 	def __init__(self, path_to_pattern, path_to_screenshots='', no_screenshots=False, DEBUG=False):
@@ -39,7 +38,11 @@ class Action:
 						self.actions_array.append(line.rstrip())
 				else:
 					self.actions_array.append(line.rstrip())
-					
+				
+				#import WOL if needed
+				if line.rstrip().lower().split(' ')[0] == 'wol':
+					import WOL
+	
 				#Var in order to check if pattern is good with command line
 				self.use_login = self.use_login or line.rstrip().lower() == "login" or line.rstrip().lower().split(' ')[0] == "login"
 				self.check_password = self.check_password or line.rstrip().lower() == "password"
