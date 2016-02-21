@@ -27,7 +27,6 @@ class MouseAndKeyboard():
 			
 	def press(self, string, delay):
 		for letter in string:
-			#os.system(self.path + " " + str(ord(letter)))
 			if self.isUnicode(letter) and not self.i2cConnection.canUnicode():
 				print "This Arduino cannot handle unicode char"
 			else:
@@ -44,7 +43,6 @@ class MouseAndKeyboard():
 		elif special == "backspace":
 			special_value = 8
 		
-		#os.system(self.path + " " + special_value)
 		self.i2cConnection.sendSpecialChar(special_value)
 		
 	#toimplement
