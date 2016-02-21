@@ -3,6 +3,7 @@
 
 import smbus
 import sys
+import time
 
 class I2C:
 	def __init__(self, address):
@@ -51,6 +52,7 @@ class I2C:
 	
 	def sendI2C(self, command, data):
 		self.bus.write_i2c_block_data(self.ADDRESS, command, data)
+		time.spleep(0.1)
 		return self.bus.read_byte(self.ADDRESS)
 		
 	def sendChar(self, char):
