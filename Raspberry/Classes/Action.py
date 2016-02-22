@@ -116,7 +116,7 @@ class Action:
 					if os.path.isdir(self.screenshots + "/" + login) is False:
 						os.system("mkdir -p " + self.screenshots + "/" + login)
 					command_line += login + "/"
-				command_line += selfcheckFileForPicture(password) + ".jpg"
+				command_line += self.checkFileForPicture(password) + ".jpg"
 				print command_line
 				os.system(command_line) 
 			elif value.split(' ')[0] == 'wait':
