@@ -42,6 +42,10 @@ class MouseAndKeyboard():
 			special_value = 9
 		elif special == "backspace":
 			special_value = 8
+		elif special == "delete":
+			special_value = 127
+		elif special == "f2":
+			special_value = 59
 		
 		self.i2cConnection.sendSpecialChar(special_value)
 		

@@ -2,6 +2,7 @@ import os.path
 import sys
 import time
 
+import IoTPlug
 import Keyboard
 
 class Action:
@@ -100,7 +101,7 @@ class Action:
 	def doActions(self, password="", login="", trial=0):
 		for i in range(0, len(self.actions_array)):
 			value = self.actions_array[i].lower()
-			if value == 'enter' or value == 'tabulation' or value == 'escape' or value == 'backspace':
+			if value == 'enter' or value == 'tabulation' or value == 'escape' or value == 'backspace' or value == 'delete' or value == 'f2':
 				self.keyboard.pressSpecial(value)	
 			elif value == 'login' or value.split(' ')[0] == 'login':
 				self.keyboard.press(login, self.delay)
@@ -124,7 +125,23 @@ class Action:
 					self.wait.doActions()
 			elif value.split(' ')[0] == 'wol':
 				WOL.WOL(value.split(' ')[1])
-					
+			elif value.split(' ')[0] == 'wemo':
+				ip = value.split(' ')[1]
+				status = value.split(' ')[2].upper()
+				if status == 'ON':
+					IoTPlug.on(ip)
+				else:
+					IoTPlug.off(ip)
+			elif value.split(' ')[0] == 'spam':
+				#spam KEY time frequency
+				key = value.split(' ')[1].lower()
+				time_to_wait = int(value.split(' ')[2])
+				frequency = int(value.split(' ')[3])
+				
+				for i in range(time_to_wait/frequency):
+					self.keyboard.pressSpecial(value)
+					time.sleep(frequency)
+
 		#If login changed since last try, we add a delay
 
 	def checkFileForPicture(self, filename):
