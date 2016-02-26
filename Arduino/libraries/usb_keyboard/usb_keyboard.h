@@ -1,3 +1,7 @@
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 #ifndef usb_serial_h__
 #define usb_serial_h__
 
@@ -203,4 +207,8 @@ extern volatile uint8_t keyboard_leds;
 #define CDC_GET_LINE_CODING		0x21
 #define CDC_SET_CONTROL_LINE_STATE	0x22
 #endif
+#endif
+
+#ifdef __cplusplus
+}
 #endif

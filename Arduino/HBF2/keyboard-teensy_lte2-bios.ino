@@ -18,7 +18,7 @@
   #include <avr/pgmspace.h>
   #include <avr/interrupt.h>
   #include <util/delay.h>
-  #include "usb_keyboard.h"
+  #include <usb_keyboard.h>
   
   
   #define NULL_MODIFIER     0
