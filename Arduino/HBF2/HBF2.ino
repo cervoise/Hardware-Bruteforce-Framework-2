@@ -8,7 +8,7 @@
 
 #if defined(__AVR_ATmega32U4__)
   #include <Mouse.h>
-  #include <Keyboard.h>
+  #include <KeyboardWithLayouts.h>
 #endif
 
 #include <Wire.h>

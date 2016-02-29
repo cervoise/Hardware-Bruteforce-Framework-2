@@ -2,6 +2,9 @@
 
   #define WHO_AM_I          0xA1 //Leonardo
 
+  #define KEYBOARD_FRENCH
+//  #define KEYBOARD_ENGLISH
+
   void keyboardStart()
   {
      Keyboard.begin();
