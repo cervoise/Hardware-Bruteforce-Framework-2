@@ -31,37 +31,32 @@
 
   void typeString(char *s)
   {
-    //Keyboard.print(s);
+    usb_keyboard_print(s[0]);
   }
 
   void typeKey(int key)
   {
-    /*
-    Keyboard.set_key1(char(key));
-    Keyboard.send_now();
-    Keyboard.set_key1(0);
-    Keyboard.send_now();
-    */
+    usb_keyboard_press(key, NULL_MODIFIER);
   }
   
   void typeEnter()
   {
-    usb_keyboard_press(KEY_ENTER, NULL_MODIFIER);
+    typeKey(KEY_ENTER);
   }
 
   void typeBackspace()
   {
-     usb_keyboard_press(KEY_BACKSPACE, NULL_MODIFIER);
+     typeKey(KEY_BACKSPACE);
   }
 
   void typeTab()
   {
-     usb_keyboard_press(KEY_TAB, NULL_MODIFIER);
+     typeKey(KEY_TAB);
   }
 
   void typeEscape()
   {
-     usb_keyboard_press(KEY_ESC, NULL_MODIFIER);
+     typeKey(KEY_ESC);
   }
 
   void moveMouse(int x, int y)
