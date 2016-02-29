@@ -1,5 +1,8 @@
 #if defined(__AVR_ATmega32U4__)
 
+  #include <Mouse.h>
+  #include <KeyboardWithLayouts.h>
+
   #define WHO_AM_I          0xA1 //Leonardo
 
   #define KEYBOARD_FRENCH
