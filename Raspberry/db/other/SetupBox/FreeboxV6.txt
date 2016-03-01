@@ -1,0 +1,7 @@
+bruteforce 4
+delay 500
+screenshot
+backspace
+backspace
+backspace
+backspace
