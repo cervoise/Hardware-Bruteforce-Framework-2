@@ -11,6 +11,7 @@ CMD_SEND_STRING = 0x01
 CMD_SEND_CHAR = 0x02
 CMD_SEND_MOUSE = 0x03
 CMD_WHO = 0x04
+CMD_PRESS_MULTIPLE = 0x05
 
 RESP_WHO = {0x00 : 'Unknown board/Command unknown',
             0xA1 : 'Arduino Leonardo',
@@ -30,8 +31,9 @@ bus = smbus.SMBus(1)
 
 parser = argparse.ArgumentParser(description='Test i2c messages')
 parser.add_argument('-w', help='sends command "Who are you?"', action='store_true')
-parser.add_argument('-s', help='send a string', type=str)
-parser.add_argument('-c', help='send a character', type=int)
+parser.add_argument('-p', help='send P (=number of) multiple chars or keys', type=int)
+parser.add_argument('-s', help='send a character', type=str)
+parser.add_argument('-c', help='send a special key code', type=int)
 parser.add_argument('-m', help='move mouse X Y', nargs=2, type=int)
 
 args = parser.parse_args()
@@ -46,7 +48,9 @@ if args.w:
     else:
         print 'Unknown response code:', r
 
-if args.s:
+if args.p:
+    bus.write_byte_data	(ADDRESS, CMD_PRESS_MULTIPLE, args.p)
+elif args.s:
     bus.write_i2c_block_data(ADDRESS, CMD_SEND_STRING, [ord(e) for e in args.s])
 elif args.c:
     bus.write_byte_data(ADDRESS, CMD_SEND_CHAR, args.c)
