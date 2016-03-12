@@ -16,6 +16,7 @@ Installation (Pi part):
 - configure i2c using raspi-config
 - apt-get install imagemagick fswebcam i2c-tools
 - optionnal (for WOL): apt-get install scapy
+- optionnal (for remote analysis): apt-get install python-pip && pip install pyftpdlib
 - reboot
 - git clone https://github.com/cervoise/Hardware-Bruteforce-Framework-2.git
 - cd Hardware-Bruteforce-Framework-2/Raspberry
