@@ -19,6 +19,8 @@ int buffer[BUFFER_LEN];
 int ack = 0;
  
 void setup() {
+  pinMode(LED_BUILTIN, OUTPUT);
+  digitalWrite(LED_BUILTIN, HIGH);
 
  //Starting keyboard
  keyboardStart();
