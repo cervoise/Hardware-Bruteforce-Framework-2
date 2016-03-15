@@ -1,8 +1,7 @@
 #Tested on a Dell Latitute E7450
 password
-delay 50
 enter
-delay 1650
+delay 1600
 screenshot
 delay 500
 enter
