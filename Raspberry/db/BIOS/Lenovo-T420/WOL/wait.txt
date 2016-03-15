@@ -1,0 +1,8 @@
+#wait for restart
+delay 11000
+#add mac address here
+wol 000000000000
+#wait for reboot
+delay 8000
+flood f12 50
+delay 3000

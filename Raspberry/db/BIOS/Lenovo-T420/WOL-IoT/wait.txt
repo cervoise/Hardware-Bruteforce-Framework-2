@@ -1,0 +1,11 @@
+#change your wemo IP here
+wemo 0.0.0.0 off
+delay 150
+#change your wemo IP here
+wemo 0.0.0.0 on
+delay 5000
+#change your mac address here
+wol 000000000000
+delay 8000
+flood f12 50
+delay 3000
