@@ -1,0 +1,8 @@
+Phoenix PB2G3A07 on PackardBell EasyNote MB87
+
+Going into BIOS: F2
+Three password trial
+Case sensitive: no
+Number: yes
+Size min: 1
+Size max: 8 

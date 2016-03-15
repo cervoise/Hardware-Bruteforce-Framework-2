@@ -1,4 +1,5 @@
 - HBF.py: runs the attack, can run a analysis after all
 - Analyze-attack.py: runs the analysis after an attack
+- RemoteLiveAnalysis.py: runs the analysis live during attack (need to be run on another computer)
 - db: contains code examples for specific or generic targets
 - screenshots: folder with screenshots from the webcam
