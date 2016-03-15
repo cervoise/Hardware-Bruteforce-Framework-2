@@ -1,9 +1,9 @@
-Phoenix PB2G3A07 on PackardBell EasyNote MB87
+Lenovo ThinkPad BIOS 83ET67WW (1.37 - 2011-11-28) on T420
 
-Going into BIOS: F2
+Going into BIOS: F12
 Passwords attempt limit: 3
 After blocked: need reboot
 Case sensitive: no
 Number: yes
 Size min: 1
-Size max: 8 
+Size max: 64
