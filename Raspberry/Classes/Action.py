@@ -67,11 +67,11 @@ class Action:
 						wait_file = path_to_pattern.rpartition('/')[0] + '/' + line.rstrip().split(' ')[1]
 					else:
 						wait_file = line.rstrip().split(' ')[1]
-						if os.path.isfile(wait_file) is False:
-							print "Wait function in " + path_to_pattern + " is not correct"
-							sys.exit(1)
-						self.wait = Action(wait_file, path_to_screenshots, no_screenshots, DEBUG)
-						self.attempt = int(line.rstrip().lower().split(' ')[2])				
+					if os.path.isfile(wait_file) is False:
+						print "Wait function in " + path_to_pattern + " is not correct"
+						sys.exit(1)
+					self.wait = Action(wait_file, path_to_screenshots, no_screenshots, DEBUG)
+					self.attempt = int(line.rstrip().lower().split(' ')[2])
 						
 				#Check for bruteforce
 				if line.rstrip().lower().split(' ')[0] == "bruteforce":
