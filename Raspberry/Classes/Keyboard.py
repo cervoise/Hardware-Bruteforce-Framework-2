@@ -45,10 +45,7 @@ class MouseAndKeyboard():
 		elif special == "delete":
 			special_value = 127
 		elif special[0] == "f": #be carefull of FN key
-			if len(special) == 2:
-				special_value = 58 - 1 + int(special[1])
-			elif len(special) == 3:
-				special_value = 58 - 1 + int(special[1:3])
+			special_value = 58 - 1 + int(special[1:])
 		#print special
 		self.i2cConnection.sendSpecialChar(special_value)
 		
