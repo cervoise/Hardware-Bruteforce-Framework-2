@@ -1,6 +1,7 @@
 import os
 import sys
 import time
+import re
 
 #For test and debug
 class KeyboardTest:
@@ -34,6 +35,8 @@ class MouseAndKeyboard():
 				time.sleep(delay/1000)
 		
 	def pressSpecial(self, special):
+		special_value = 0
+
 		if special == "enter":
 			special_value = 13
 		elif special == "escape":
@@ -44,10 +47,12 @@ class MouseAndKeyboard():
 			special_value = 8
 		elif special == "delete":
 			special_value = 127
-		elif special[0] == "f": #be carefull of FN key
-			special_value = 58 - 1 + int(special[1:])
-		#print special
-		self.i2cConnection.sendSpecialChar(special_value)
+		elif special[0] == "f":
+			if re.match('f\d{1,2}', special): #Check if numeric after the 'f', to ignore keys like Fn
+				special_value = 58 - 1 + int(special[1:])
+		
+		if special_value > 0:
+			self.i2cConnection.sendSpecialChar(special_value)
 		
 	#toimplement
 	def isUnicode(self, char):
