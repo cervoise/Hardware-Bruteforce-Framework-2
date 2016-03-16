@@ -7,5 +7,5 @@ delay 5000
 #change your mac address here
 wol 000000000000
 delay 8000
-flood f12 50
+flood f12 3000
 delay 3000

@@ -105,10 +105,10 @@ class Action:
 			if value == 'enter' or value == 'tabulation' or value == 'escape' or value == 'backspace' or value == 'delete' or (value[0] == 'f' and len(value)<4):
 				self.keyboard.pressSpecial(value)	
 			elif value.split(' ')[0] == 'flood':
-				for i in range(int(value.split(' ')[2])):
-					print value.split(' ')
-					print value
-					self.keyboard.pressSpecial(value.split(' ')[1])	
+				timeout = time.time() + (int(value.split(' ')[2]) / 1000.)
+				key = value.split(' ')[1]
+				while time.time() < timeout:
+					self.keyboard.pressSpecial(key)	
 			elif value == 'login' or value.split(' ')[0] == 'login':
 				self.keyboard.press(login, self.delay)
 			elif value == 'password' or value.split(' ')[0] == 'bruteforce':
