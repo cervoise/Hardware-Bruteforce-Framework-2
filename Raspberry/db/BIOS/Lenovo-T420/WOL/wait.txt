@@ -4,5 +4,5 @@ delay 11000
 wol 000000000000
 #wait for reboot
 delay 8000
-flood f12 3000
+flood f1 3000
 delay 3000
