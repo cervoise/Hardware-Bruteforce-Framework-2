@@ -7,10 +7,6 @@
    0xB2 : 'Teensy++ 1.0',
    0xB3 : 'Teensy 2.0',
    0xB4 : 'Teensy++ 2.0',
-   0xB5 : 'Teensy 3.0',
-   0xB6 : 'Teensy 3.1',
-   0xB7 : 'Teensy LC',
-   0xB8 : 'Teensy 3.2',
   */
   #define WHO_AM_I          0xB4
   
