@@ -84,8 +84,10 @@ void receiveData(int byteCount){
 void type_char(int number) {
   switch (number) {
     case 8:   //BS
-    case 127: //DEL
       typeBackspace();
+      break;
+    case 127: //DEL
+      typeDelete();
       break;
     case 9:
       typeTab();

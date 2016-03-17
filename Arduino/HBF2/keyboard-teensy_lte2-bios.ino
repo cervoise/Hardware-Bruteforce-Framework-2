@@ -35,26 +35,6 @@
     usb_keyboard_press(key, NULL_MODIFIER);
   }
   
-  void typeEnter()
-  {
-    typeKey(KEY_ENTER);
-  }
-
-  void typeBackspace()
-  {
-     typeKey(KEY_BACKSPACE);
-  }
-
-  void typeTab()
-  {
-     typeKey(KEY_TAB);
-  }
-
-  void typeEscape()
-  {
-     typeKey(KEY_ESC);
-  }
-
   void moveMouse(int x, int y)
   {
     //Can't move mouse here. Set TEENSY_LTE20_BIOS to false to use mouse.

@@ -25,26 +25,6 @@
      Keyboard.releaseAll();
   }
   
-  void typeEnter()
-  {
-     typeKey(KEY_RETURN);
-  }
-
-  void typeBackspace()
-  {
-     typeKey(KEY_BACKSPACE);
-  }
-
-  void typeTab()
-  {
-     typeKey(KEY_TAB);
-  }
-
-  void typeEscape()
-  {
-     typeKey(KEY_ESC);
-  }
-
   void moveMouse(int x, int y)
   {
     Mouse.move(buffer[2], buffer[1]);
