@@ -1,0 +1,9 @@
+Sabertooth x58 Version 0702/v02.61
+
+Going into BIOS: DEL
+Passwords attempt limit: 3
+After blocked: F1 to boot
+Case sensitive: no
+Number: yes
+Size min: 1
+Size max: 6
