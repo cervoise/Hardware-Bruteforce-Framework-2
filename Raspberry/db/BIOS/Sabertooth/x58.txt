@@ -1,0 +1,3 @@
+password
+enter
+wait x58-wait.txt 3
