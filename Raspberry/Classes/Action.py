@@ -105,10 +105,15 @@ class Action:
 			if value == 'enter' or value == 'tabulation' or value == 'escape' or value == 'backspace' or value == 'delete' or (value[0] == 'f' and len(value)<4):
 				self.keyboard.pressSpecial(value)	
 			elif value.split(' ')[0] == 'flood':
-				timeout = time.time() + (int(value.split(' ')[2]) / 1000.)
+				#flood KEY time [sleep]
 				key = value.split(' ')[1]
+				timeout = time.time() + (int(value.split(' ')[2]) / 1000.)
+				sleep = 0 if len(value.split(' ')) < 4 else int(value.split(' ')[3])/1000.
 				while time.time() < timeout:
-					self.keyboard.pressSpecial(key)	
+					self.keyboard.pressSpecial(key)
+					time.sleep(sleep)
+			elif value.split(' ')[0] == 'spam':
+				raise ValueError('"spam" command has been replaced by "flood"')
 			elif value == 'login' or value.split(' ')[0] == 'login':
 				self.keyboard.press(login, self.delay)
 			elif value == 'password' or value.split(' ')[0] == 'bruteforce':
@@ -138,15 +143,6 @@ class Action:
 					IoTPlug.on(ip)
 				else:
 					IoTPlug.off(ip)
-			elif value.split(' ')[0] == 'spam':
-				#spam KEY time frequency
-				key = value.split(' ')[1].lower()
-				time_to_wait = int(value.split(' ')[2])
-				frequency = int(value.split(' ')[3])
-				
-				for i in range(time_to_wait/frequency):
-					self.keyboard.pressSpecial(value)
-					time.sleep(frequency)
 
 		#If login changed since last try, we add a delay
 
