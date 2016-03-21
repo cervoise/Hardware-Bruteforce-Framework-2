@@ -119,7 +119,7 @@ class Action:
 			elif value == 'password' or value.split(' ')[0] == 'bruteforce':
 				self.keyboard.press(password, self.delay)
 			elif value.split(' ')[0] == 'delay':
-				time.sleep(int(value.split(' ')[1])/1000)
+				time.sleep(int(value.split(' ')[1])/1000.)
 			elif value == 'screenshot':
 				command_line = "fswebcam --no-banner "
 				if self.screenshots != '':

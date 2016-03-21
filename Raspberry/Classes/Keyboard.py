@@ -11,7 +11,7 @@ class KeyboardTest:
 	def press(self, string, delay):
 		for letter in string:
 			print letter
-			time.sleep(delay/1000)
+			time.sleep(delay/1000.)
 		
 	def pressSpecial(self, special):
 		print special
@@ -32,7 +32,7 @@ class MouseAndKeyboard():
 				print "This Arduino cannot handle unicode char"
 			else:
 				self.i2cConnection.sendChar(letter)
-				time.sleep(delay/1000)
+				time.sleep(delay/1000.)
 		
 	def pressSpecial(self, special):
 		special_value = 0
