@@ -1,0 +1,9 @@
+Dell BIOS A07 on D620 and A13 on D600
+
+Going into BIOS: F2
+Passwords attempt limit: no
+Case sensitive: no
+Number: yes
+Size min: 4
+Size max: 8
+Layout: QWERTY
