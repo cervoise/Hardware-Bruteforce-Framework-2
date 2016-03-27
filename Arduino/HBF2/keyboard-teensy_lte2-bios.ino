@@ -1,6 +1,10 @@
 #if defined(__AVR_AT90USB1286__) and TEENSY_LTE20_BIOS
 
   // USB Type must be defined to "Serial" in order to use this code
+  #ifndef USB_SERIAL
+    #error 'You must select USB Type: Serial in Tools menu or set TEENSY_LTE20_BIOS to false'
+    //quotes only to avoid syntax coloration in Arduino IDE
+  #endif
   
   #include <avr/io.h>
   #include <avr/pgmspace.h>
