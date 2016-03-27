@@ -21,7 +21,8 @@ class Analyzer:
 	        			temp_samples.append(self.compare(path_to_screenshots + '/' + password + ".jpg", path_to_samples + '/' + sample))
 	        		else:
 	        			print path_to_screenshots + '/' + password + ".jpg does not exist"
-	        			sys.exit(1)
+	        			#sys.exit(1)
+	        			temp_samples.append("0")
         		self.comparaisons.append(Comparaison(password, temp_samples))
 	
 	def compare(self, sample, screenshot):
