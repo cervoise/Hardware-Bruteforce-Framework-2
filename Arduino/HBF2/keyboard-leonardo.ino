@@ -1,9 +1,7 @@
-#if defined(__AVR_ATmega32U4__)
+#if defined ARDUINO_AVR_LEONARDO or defined ARDUINO_AVR_MICRO
 
   #include <Mouse.h>
   #include <KeyboardWithLayouts.h>
-
-  #define WHO_AM_I          0xA1 //Leonardo
 
   #define KEYBOARD_FRENCH
 //  #define KEYBOARD_ENGLISH
@@ -28,11 +26,6 @@
   void moveMouse(int x, int y)
   {
     Mouse.move(buffer[2], buffer[1]);
-  }
-
-  int whoami()
-  {
-    return WHO_AM_I;
   }
   
 #endif
