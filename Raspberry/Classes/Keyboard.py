@@ -47,6 +47,14 @@ class MouseAndKeyboard():
 			special_value = 8
 		elif special == "delete":
 			special_value = 127
+		elif special == "left":
+			special_value = 80
+		elif special == "right":
+			special_value = 79 
+		elif special == "up":
+			special_value = 82
+		elif special == "down":
+			special_value = 81
 		elif special[0] == "f":
 			if re.match('f\d{1,2}', special): #Check if numeric after the 'f', to ignore keys like Fn
 				special_value = 58 - 1 + int(special[1:])
