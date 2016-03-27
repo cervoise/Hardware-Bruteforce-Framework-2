@@ -99,6 +99,18 @@ void type_char(int number) {
     case 27:
       typeEscape();
       break;
+    case 79:
+      typeRight();
+      break;
+    case 80:
+      typeLeft();
+      break;
+    case 81:
+      typeDown();
+      break;
+    case 82:
+      typeUp();
+      break;
     default:
       typeKey(number);
   }

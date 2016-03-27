@@ -22,4 +22,24 @@
   {
      typeKey(KEY_ESC);
   }
+  
+  void typeRight()
+  {
+     typeKey(KEY_RIGHT_ARROW);
+  }
+
+  void typeLeft()
+  {
+     typeKey(KEY_LEFT_ARROW);
+  }
+
+  void typeDown()
+  {
+     typeKey(KEY_DOWN_ARROW);
+  }
+
+  void typeUp()
+  {
+     typeKey(KEY_UP_ARROW);
+  }
 
