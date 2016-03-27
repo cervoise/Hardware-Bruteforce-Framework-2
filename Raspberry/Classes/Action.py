@@ -102,7 +102,7 @@ class Action:
 	def doActions(self, password="", login="", trial=0):
 		for i in range(0, len(self.actions_array)):
 			value = self.actions_array[i].lower()
-			if value == 'enter' or value == 'tabulation' or value == 'escape' or value == 'backspace' or value == 'delete' or (value[0] == 'f' and len(value)<4):
+			if value == 'enter' or value == 'tabulation' or value == 'escape' or value == 'backspace' or value == 'delete' or value == 'left' or value == 'right' or value == 'up' or value == 'down' or (value[0] == 'f' and len(value)<4):
 				self.keyboard.pressSpecial(value)	
 			elif value.split(' ')[0] == 'flood':
 				#flood KEY time [sleep]
