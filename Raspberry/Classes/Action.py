@@ -48,7 +48,7 @@ class Action:
 				#Var in order to check if pattern is good with command line
 				self.use_login = self.use_login or line.rstrip().lower() == "login" or line.rstrip().lower().split(' ')[0] == "login"
 				self.check_password = self.check_password or line.rstrip().lower() == "password"
-				self.use_screenshot = self.check_password or line.rstrip().lower() == "screenshot"
+				self.use_screenshot = self.use_screenshot or line.rstrip().lower() == "screenshot"
 				
 				#Check for login delay
 				if line.rstrip().lower().split(' ')[0] == "login" and len(line.rstrip().lower().split(' ')) == 2:
