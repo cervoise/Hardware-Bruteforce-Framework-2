@@ -1,3 +1,4 @@
+# Reglages -> Options TV et codes -> Modifier le code d'achat
 bruteforce numeric 4
 delay 250
 screenshot
