@@ -1,8 +1,8 @@
-bruteforce 4
-delay 500
+bruteforce numeric 4
+delay 250
 screenshot
 delay 500
-backspace
-backspace
-backspace
-backspace
+left
+left
+left
+left
