@@ -16,14 +16,12 @@ class I2C:
 
 		self.RESP_WHO = {0x00 : 'Unknown board/Command unknown',
 				 0xA1 : 'Arduino Leonardo',
-				 #0xB1 : 'Teensy 1.0',
-				 #0xB2 : 'Teensy++ 1.0',
+				 0xA2 : 'Arduino Micro',
 				 0xB3 : 'Teensy 2.0',
 				 0xB4 : 'Teensy++ 2.0',
 				 0xB5 : 'Teensy 3.0',
-				 0xB6 : 'Teensy 3.1',
+				 0xB6 : 'Teensy 3.1 / 3.2',
 				 0xB7 : 'Teensy LC',
-				 0xB8 : 'Teensy 3.2',
 		}
 		self.response = 0
 		# for RPI version 1, use "bus = smbus.SMBus(0)"
