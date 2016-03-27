@@ -135,6 +135,12 @@ extern volatile uint8_t keyboard_leds;
 #define KEYPAD_PERIOD	99		
 
 
+// for compatibility with Leonardo's slightly different names
+#define KEY_UP_ARROW	KEY_UP
+#define KEY_DOWN_ARROW	KEY_DOWN
+#define KEY_LEFT_ARROW	KEY_LEFT
+#define KEY_RIGHT_ARROW	KEY_RIGHT
+#define KEY_RETURN	KEY_ENTER
 
 
 // Everything below this point is only intended for usb_serial.c
