@@ -8,6 +8,11 @@
 
 #include <Wire.h>
 
+#if defined ARDUINO_AVR_LEONARDO or defined ARDUINO_AVR_MICRO
+  #include <Mouse.h>
+  #include <KeyboardWithLayouts.h>
+#endif
+
 #define CMD_SEND_STRING   0x01
 #define CMD_SEND_CHAR     0x02
 #define CMD_MOUSE_MOVE    0x03

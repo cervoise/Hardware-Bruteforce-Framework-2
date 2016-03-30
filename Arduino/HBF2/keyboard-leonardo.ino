@@ -1,8 +1,5 @@
 #if defined ARDUINO_AVR_LEONARDO or defined ARDUINO_AVR_MICRO
 
-  #include <Mouse.h>
-  #include <KeyboardWithLayouts.h>
-
   #define KEYBOARD_FRENCH
 //  #define KEYBOARD_ENGLISH
 
