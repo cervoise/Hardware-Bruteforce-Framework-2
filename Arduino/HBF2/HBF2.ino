@@ -85,11 +85,8 @@ void receiveData(int byteCount){
       break;
     
     case CMD_SEND_CHAR:
-      if(checkIncomingData(buffer[1], 0, INT_MAX))
-      {
-        type_char(buffer[1]);
-        ack = 1;
-      }
+      type_char(buffer[1]);
+      ack = 1;
       break;
     
     case CMD_MOUSE_MOVE:
