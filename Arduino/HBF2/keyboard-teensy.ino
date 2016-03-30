@@ -24,9 +24,21 @@
   }
   
 
-  void moveMouse(int x, int y)
+  void mouseMove(int x, int y)
   {
     Mouse.move(buffer[2], buffer[1]);
+  }
+
+  void mouseClick(int butt, bool state)
+  {
+    if(state && !Mouse.isPressed(butt))
+    {
+      Mouse.press(butt);
+    }
+    else if(!state && Mouse.isPressed(butt))
+    {
+      Mouse.release(butt);
+    }
   }
   
 #endif

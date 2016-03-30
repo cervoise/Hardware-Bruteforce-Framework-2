@@ -9,7 +9,8 @@ ADDRESS = 0x04
 
 CMD_SEND_STRING = 0x01
 CMD_SEND_CHAR = 0x02
-CMD_SEND_MOUSE = 0x03
+CMD_MOUSE_MOVE = 0x03
+CMD_MOUSE_CLICK = 0x06
 CMD_WHO = 0x04
 CMD_PRESS_MULTIPLE = 0x05
 
@@ -32,7 +33,8 @@ parser.add_argument('-w', help='sends command "Who are you?"', action='store_tru
 parser.add_argument('-p', help='send P (=number of) multiple chars or keys', type=int)
 parser.add_argument('-s', help='send a character', type=str)
 parser.add_argument('-c', help='send a special key code', type=int)
-parser.add_argument('-m', help='move mouse X Y', nargs=2, type=int)
+parser.add_argument('-m', help='move mouse X Y', nargs=2, type=int, metavar=("X", "Y"))
+parser.add_argument('-k', help='click mouse button : BUTTON(left:0/right:1/middle:2) STATE(0/1)', nargs=2, type=int, metavar=("BUTTON", "STATE"))
 
 args = parser.parse_args()
 #print (args)
@@ -53,7 +55,9 @@ elif args.s:
 elif args.c:
     bus.write_byte_data(ADDRESS, CMD_SEND_CHAR, args.c)
 elif args.m:
-    bus.write_i2c_block_data(ADDRESS, CMD_SEND_MOUSE, args.m)
+    bus.write_i2c_block_data(ADDRESS, CMD_MOUSE_MOVE, args.m)
+elif args.k:
+    bus.write_i2c_block_data(ADDRESS, CMD_MOUSE_CLICK, args.k)
 else:
     if not args.w:
         print "Nothing sent to arduino."

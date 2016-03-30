@@ -11,7 +11,7 @@ class I2C:
 		
 		self.CMD_SEND_STRING = 0x01
 		self.CMD_SEND_CHAR = 0x02
-		self.CMD_SEND_MOUSE = 0x03
+		self.CMD_MOUSE_MOVE = 0x03
 		self.CMD_WHO = 0x04
 
 		self.RESP_WHO = {0x00 : 'Unknown board/Command unknown',
@@ -60,7 +60,7 @@ class I2C:
 		return self.sendI2C(self.CMD_SEND_CHAR, [special_char])
 	
 	def sendMouse(self, x, y):
-		return self.sendI2C(self.CMD_SEND_MOUSE, [x, y])
+		return self.sendI2C(self.CMD_MOUSE_MOVE, [x, y])
 	
 		
 		

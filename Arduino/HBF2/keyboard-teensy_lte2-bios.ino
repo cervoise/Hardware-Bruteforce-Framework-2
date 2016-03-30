@@ -31,9 +31,14 @@
     usb_keyboard_press(key, NULL_MODIFIER);
   }
   
-  void moveMouse(int x, int y)
+  void mouseMove(int x, int y)
   {
     //Can't move mouse here. Set TEENSY_LTE20_BIOS to false to use mouse.
+  }
+  
+  void mouseClick(int butt, bool state)
+  {
+    //Can't click mouse here. Set TEENSY_LTE20_BIOS to false to use mouse.
   }
   
 #endif

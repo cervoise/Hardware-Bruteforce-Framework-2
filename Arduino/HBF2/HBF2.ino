@@ -10,11 +10,14 @@
 
 #define CMD_SEND_STRING   0x01
 #define CMD_SEND_CHAR     0x02
-#define CMD_SEND_MOUSE    0x03
+#define CMD_MOUSE_MOVE    0x03
+#define CMD_MOUSE_CLICK   0x06
 #define CMD_WHO           0x04
 
 #define BUFFER_LEN        10
 int buffer[BUFFER_LEN];
+
+static const int mouseButtons[] = {MOUSE_LEFT, MOUSE_RIGHT, MOUSE_MIDDLE};
 
 int ack = 0;
  
@@ -73,8 +76,13 @@ void receiveData(int byteCount){
       ack = 1;
       break;
     
-    case CMD_SEND_MOUSE:
-      moveMouse(buffer[2], buffer[1]);
+    case CMD_MOUSE_MOVE:
+      mouseMove(buffer[2], buffer[1]);
+      ack = 1;
+      break;
+
+    case CMD_MOUSE_CLICK:
+      mouseClick(mouseButtons[buffer[1]], buffer[2]);
       ack = 1;
       break;
   }
