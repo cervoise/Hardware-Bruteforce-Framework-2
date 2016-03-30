@@ -77,7 +77,7 @@ void receiveData(int byteCount){
       break;
     
     case CMD_MOUSE_MOVE:
-      mouseMove(buffer[2], buffer[1]);
+      mouseMove(buffer[1], buffer[2]);
       ack = 1;
       break;
 

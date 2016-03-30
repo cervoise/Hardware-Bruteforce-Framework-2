@@ -26,7 +26,7 @@
 
   void mouseMove(int x, int y)
   {
-    Mouse.move(buffer[2], buffer[1]);
+    Mouse.move(x, y);
   }
 
   void mouseClick(int butt, bool state)
