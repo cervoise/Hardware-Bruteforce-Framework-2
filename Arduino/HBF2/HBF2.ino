@@ -1,12 +1,17 @@
 
+// ********** Begin of configuration **********
+
 //Set to true if you intend to use a Teensy(++) 2.0 as a keyboard in a bios
 #define TEENSY_LTE20_BIOS true
 
 // Your Arduino/teensy slave i2c address
 #define SLAVE_ADDRESS     0x04
 
+// ********** End of configuration **********
+
 
 #include <Wire.h>
+#include <limits.h>
 
 #if defined ARDUINO_AVR_LEONARDO or defined ARDUINO_AVR_MICRO
   #include <Mouse.h>
@@ -19,10 +24,13 @@
 #define CMD_MOUSE_CLICK   0x06
 #define CMD_WHO           0x04
 
+#define checkIncomingData(DATA, MIN, MAX) (DATA >= MIN && DATA <= MAX)
+
 #define BUFFER_LEN        10
 int buffer[BUFFER_LEN];
 
 static const int mouseButtons[] = {MOUSE_LEFT, MOUSE_RIGHT, MOUSE_MIDDLE};
+static const int mouseButtonsLength = (int)(sizeof(mouseButtons)/sizeof(mouseButtons[0]));
 
 int ack = 0;
  
@@ -77,8 +85,11 @@ void receiveData(int byteCount){
       break;
     
     case CMD_SEND_CHAR:
-      type_char(buffer[1]);
-      ack = 1;
+      if(checkIncomingData(buffer[1], 0, INT_MAX))
+      {
+        type_char(buffer[1]);
+        ack = 1;
+      }
       break;
     
     case CMD_MOUSE_MOVE:
@@ -87,8 +98,12 @@ void receiveData(int byteCount){
       break;
 
     case CMD_MOUSE_CLICK:
-      mouseClick(mouseButtons[buffer[1]], buffer[2]);
-      ack = 1;
+      if(checkIncomingData(buffer[1], 0, mouseButtonsLength-1)
+        && checkIncomingData(buffer[2], 0, 1))
+      {
+        mouseClick(mouseButtons[buffer[1]], buffer[2]);
+        ack = 1;
+      }
       break;
   }
 
@@ -133,3 +148,4 @@ void type_char(int number) {
 void sendData() {
   Wire.write(ack);
 }
+
