@@ -1,0 +1,10 @@
+#Debian based
+#Arch used for generate ISO must be same as the target
+
+mkdir -p grubreboot/boot
+cd grubreboot/
+cp -R /boot/grub boot/
+echo "reboot" > boot/grub/grub.cfg
+
+sudo apt-get install xorriso
+grub-mkrescue -o grubreboot.iso .
