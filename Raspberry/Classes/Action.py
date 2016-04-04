@@ -143,6 +143,11 @@ class Action:
 					IoTPlug.on(ip)
 				else:
 					IoTPlug.off(ip)
+			elif value.split(' ')[0] == 'gpio':
+				pin = int(value.split(' ')[1])
+				sleep = int(value.split(' ')[2])/1000.
+				path = os.path.dirname(os.path.realpath(__file__))
+				os.system("sudo python %s/gpio.py %d %f" % (path, pin, sleep))
 
 		#If login changed since last try, we add a delay
 
