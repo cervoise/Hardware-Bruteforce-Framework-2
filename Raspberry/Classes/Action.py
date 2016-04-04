@@ -102,24 +102,26 @@ class Action:
 	def doActions(self, password="", login="", trial=0):
 		for i in range(0, len(self.actions_array)):
 			value = self.actions_array[i].lower()
+			valueSplit = value.split(' ')
+			
 			if value == 'enter' or value == 'tabulation' or value == 'escape' or value == 'backspace' or value == 'delete' or value == 'left' or value == 'right' or value == 'up' or value == 'down' or (value[0] == 'f' and len(value)<4):
 				self.keyboard.pressSpecial(value)	
-			elif value.split(' ')[0] == 'flood':
+			elif valueSplit[0] == 'flood':
 				#flood KEY time [sleep]
-				key = value.split(' ')[1]
-				timeout = time.time() + (int(value.split(' ')[2]) / 1000.)
-				sleep = 0 if len(value.split(' ')) < 4 else int(value.split(' ')[3])/1000.
+				key = valueSplit[1]
+				timeout = time.time() + (int(valueSplit[2]) / 1000.)
+				sleep = 0 if len(valueSplit) < 4 else int(valueSplit[3])/1000.
 				while time.time() < timeout:
 					self.keyboard.pressSpecial(key)
 					time.sleep(sleep)
-			elif value.split(' ')[0] == 'spam':
+			elif valueSplit[0] == 'spam':
 				raise ValueError('"spam" command has been replaced by "flood"')
-			elif value == 'login' or value.split(' ')[0] == 'login':
+			elif value == 'login' or valueSplit[0] == 'login':
 				self.keyboard.press(login, self.delay)
-			elif value == 'password' or value.split(' ')[0] == 'bruteforce':
+			elif value == 'password' or valueSplit[0] == 'bruteforce':
 				self.keyboard.press(password, self.delay)
-			elif value.split(' ')[0] == 'delay':
-				time.sleep(int(value.split(' ')[1])/1000.)
+			elif valueSplit[0] == 'delay':
+				time.sleep(int(valueSplit[1])/1000.)
 			elif value == 'screenshot':
 				command_line = "fswebcam --no-banner "
 				if self.screenshots != '':
@@ -131,21 +133,21 @@ class Action:
 				command_line += self.checkFileForPicture(password) + ".jpg"
 				print command_line
 				os.system(command_line) 
-			elif value.split(' ')[0] == 'wait':
+			elif valueSplit[0] == 'wait':
 				if trial % self.attempt == 0:
 					self.wait.doActions()
-			elif value.split(' ')[0] == 'wol':
-				WOL.WOL(value.split(' ')[1])
-			elif value.split(' ')[0] == 'wemo':
-				ip = value.split(' ')[1]
-				status = value.split(' ')[2].upper()
+			elif valueSplit[0] == 'wol':
+				WOL.WOL(valueSplit[1])
+			elif valueSplit[0] == 'wemo':
+				ip = valueSplit[1]
+				status = valueSplit[2].upper()
 				if status == 'ON':
 					IoTPlug.on(ip)
 				else:
 					IoTPlug.off(ip)
-			elif value.split(' ')[0] == 'gpio':
-				pin = int(value.split(' ')[1])
-				sleep = int(value.split(' ')[2])/1000.
+			elif valueSplit[0] == 'gpio':
+				pin = int(valueSplit[1])
+				sleep = int(valueSplit[2])/1000.
 				path = os.path.dirname(os.path.realpath(__file__))
 				os.system("sudo python %s/gpio.py %d %f" % (path, pin, sleep))
 
