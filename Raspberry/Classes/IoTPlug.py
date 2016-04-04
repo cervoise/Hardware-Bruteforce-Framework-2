@@ -3,7 +3,7 @@
 import os
 
 path = os.path.dirname(os.path.realpath(__file__))
-command_line = 'bash ' + path + '/wemo-on-off.sh '
+command_line = 'bash ' + path + '/scripts/wemo-on-off.sh '
 
 
 def on(IP):
