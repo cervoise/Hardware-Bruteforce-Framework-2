@@ -13,7 +13,8 @@ class I2C:
 		self.CMD_SEND_CHAR = 0x02
 		self.CMD_MOUSE_MOVE = 0x03
 		self.CMD_WHO = 0x04
-
+		self.CMD_MOUSE_CLICK = 0x06
+		
 		self.RESP_WHO = {0x00 : 'Unknown board/Command unknown',
 				 0xA1 : 'Arduino Leonardo',
 				 0xA2 : 'Arduino Micro',
@@ -62,6 +63,7 @@ class I2C:
 	def sendMouse(self, x, y):
 		return self.sendI2C(self.CMD_MOUSE_MOVE, [x, y])
 	
-		
+	def sendMouseClick(self)	
+		return self.sendI2C(self.CMD_MOUSE_CLICK)
 		
 			

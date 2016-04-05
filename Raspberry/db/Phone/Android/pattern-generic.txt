@@ -1,0 +1,7 @@
+pattern
+delay 300
+enter
+delay 3500
+screenshot
+delay 500
+wait wait-generic.txt 5
