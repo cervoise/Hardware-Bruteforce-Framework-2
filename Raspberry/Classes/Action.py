@@ -59,7 +59,8 @@ class Action:
 				
 				#Check for wait
 				if lineCleaned.split(' ')[0] == "wait":
-					if len(line.rstrip().split(' ')) != 3:
+					#wait file attempts
+					if len(lineCleaned.split(' ')) != 3:
 						print "Wait instruction is not correct: wait file attempt"
 						sys.exit(1)
 					if path_to_pattern.rpartition('/')[0] != '':
@@ -121,6 +122,7 @@ class Action:
 			elif value == 'password' or valueSplit[0] == 'bruteforce':
 				self.keyboard.press(password, self.delay)
 			elif valueSplit[0] == 'delay':
+				#delay time
 				time.sleep(int(valueSplit[1])/1000.)
 			elif value == 'screenshot':
 				command_line = "fswebcam --no-banner "
@@ -137,8 +139,10 @@ class Action:
 				if trial % self.attempt == 0:
 					self.wait.doActions()
 			elif valueSplit[0] == 'wol':
+				#wol MAC
 				WOL.WOL(valueSplit[1])
 			elif valueSplit[0] == 'wemo':
+				#wemo IP on/off
 				ip = valueSplit[1]
 				status = valueSplit[2].upper()
 				if status == 'ON':
@@ -146,10 +150,11 @@ class Action:
 				else:
 					IoTPlug.off(ip)
 			elif valueSplit[0] == 'gpio':
+				#gpio pin time
 				pin = int(valueSplit[1])
-				sleep = int(valueSplit[2])/1000.
+				time = int(valueSplit[2])/1000.
 				path = os.path.dirname(os.path.realpath(__file__)) + "/scripts"
-				os.system("sudo python %s/gpio.py %d %f" % (path, pin, sleep))
+				os.system("sudo python %s/gpio.py %d %f" % (path, pin, time))
 
 		#If login changed since last try, we add a delay
 
