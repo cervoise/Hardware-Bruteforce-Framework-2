@@ -90,8 +90,6 @@ class Action:
 					if self.bruteforce_size_stop > 6:
 						print "Error, bruteforce size is too high"
 						sys.exit(1)
-		print self.actions_array
-
 		if no_screenshots is True:
 			self.use_screenshot = False
 		
