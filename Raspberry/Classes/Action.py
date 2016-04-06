@@ -46,7 +46,7 @@ class Action:
 	
 				#Var in order to check if pattern is good with command line
 				self.use_login = self.use_login or lineCleaned == "login" or lineCleaned.split(' ')[0] == "login"
-				self.check_password = self.check_password or lineCleaned == "password"
+				self.check_password = self.check_password or lineCleaned == "password" or lineCleaned == "pattern"
 				self.use_screenshot = self.use_screenshot or lineCleaned == "screenshot"
 				
 				#Check for login delay
@@ -119,6 +119,8 @@ class Action:
 				self.keyboard.press(login, self.delay)
 			elif value == 'password' or valueSplit[0] == 'bruteforce':
 				self.keyboard.press(password, self.delay)
+			elif value == 'pattern':
+				self.keyboard.drawPattern(password)
 			elif valueSplit[0] == 'delay':
 				#delay time
 				time.sleep(int(valueSplit[1])/1000.)
