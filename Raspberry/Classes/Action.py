@@ -104,7 +104,7 @@ class Action:
 			value = self.actions_array[i]
 			valueSplit = value.split(' ')
 			
-			if value == 'enter' or value == 'tabulation' or value == 'escape' or value == 'backspace' or value == 'delete' or value == 'left' or value == 'right' or value == 'up' or value == 'down' or (value[0] == 'f' and len(value)<4):
+			if value in ['enter', 'tabulation', 'escape', 'backspace', 'delete', 'left', 'right', 'up', 'down'] or (value[0] == 'f' and len(value)<4):
 				self.keyboard.pressSpecial(value)	
 			elif valueSplit[0] == 'flood':
 				#flood KEY time [sleep]
