@@ -34,32 +34,34 @@ class Action:
 		
 		for line in open(path_to_pattern):
 			if line[0] != '#':
+				lineCleaned = line.rstrip().lower()
+				
 				#Add the line to the array
-				if line.rstrip().lower() == "screenshot":
+				if lineCleaned == "screenshot":
 					if no_screenshots is False:
-						self.actions_array.append(line.rstrip())
+						self.actions_array.append(lineCleaned)
 				else:
-					self.actions_array.append(line.rstrip())
+					self.actions_array.append(lineCleaned)
 				
 				#import WOL if needed
-				if line.rstrip().lower().split(' ')[0] == 'wol':
+				if lineCleaned.split(' ')[0] == 'wol':
 					import WOL
 	
 				#Var in order to check if pattern is good with command line
-				self.use_login = self.use_login or line.rstrip().lower() == "login" or line.rstrip().lower().split(' ')[0] == "login"
-				self.check_password = self.check_password or line.rstrip().lower() == "password"
-				self.use_screenshot = self.use_screenshot or line.rstrip().lower() == "screenshot"
+				self.use_login = self.use_login or lineCleaned == "login" or lineCleaned.split(' ')[0] == "login"
+				self.check_password = self.check_password or lineCleaned == "password"
+				self.use_screenshot = self.use_screenshot or lineCleaned == "screenshot"
 				
 				#Check for login delay
-				if line.rstrip().lower().split(' ')[0] == "login" and len(line.rstrip().lower().split(' ')) == 2:
-					self.new_login_delay = line.rstrip().lower().split(' ')[1]
+				if lineCleaned.split(' ')[0] == "login" and len(lineCleaned.split(' ')) == 2:
+					self.new_login_delay = lineCleaned.split(' ')[1]
 					
 				#Check for delaypassword
-				if line.rstrip().lower().split(' ')[0] == "delaypassword":
-					self.delay = int(line.rstrip().lower().split(' ')[1])
+				if lineCleaned.split(' ')[0] == "delaypassword":
+					self.delay = int(lineCleaned.split(' ')[1])
 				
 				#Check for wait
-				if line.rstrip().lower().split(' ')[0] == "wait":
+				if lineCleaned.split(' ')[0] == "wait":
 					if len(line.rstrip().split(' ')) != 3:
 						print "Wait instruction is not correct: wait file attempt"
 						sys.exit(1)
@@ -71,15 +73,15 @@ class Action:
 						print "Wait function in " + path_to_pattern + " is not correct"
 						sys.exit(1)
 					self.wait = Action(wait_file, path_to_screenshots, no_screenshots, DEBUG)
-					self.attempt = int(line.rstrip().lower().split(' ')[2])
+					self.attempt = int(lineCleaned.split(' ')[2])
 						
 				#Check for bruteforce
-				if line.rstrip().lower().split(' ')[0] == "bruteforce":
+				if lineCleaned.split(' ')[0] == "bruteforce":
 					self.bruteforce = True
 					#add error if no size
 					#key: bruteforce charset (numeric, alphaLower, alphaUpper, alpha, alphaNumericLower,  alphaNumericUpper, alphaNumeric) sizemin-sizemax
 					#one size possible
-					line_split = line.rstrip().lower().split(' ')
+					line_split = lineCleaned.split(' ')
 					self.bruteforce_charset = line_split[1].lower()
 					if len(line_split[2].split('-')) == 2:
 						self.bruteforce_size_start = int(line_split[2].split('-')[0])
@@ -90,7 +92,8 @@ class Action:
 					if self.bruteforce_size_stop > 6:
 						print "Error, bruteforce size is too high"
 						sys.exit(1)
-		
+		print self.actions_array
+
 		if no_screenshots is True:
 			self.use_screenshot = False
 		
@@ -101,7 +104,7 @@ class Action:
 	
 	def doActions(self, password="", login="", trial=0):
 		for i in range(0, len(self.actions_array)):
-			value = self.actions_array[i].lower()
+			value = self.actions_array[i]
 			valueSplit = value.split(' ')
 			
 			if value == 'enter' or value == 'tabulation' or value == 'escape' or value == 'backspace' or value == 'delete' or value == 'left' or value == 'right' or value == 'up' or value == 'down' or (value[0] == 'f' and len(value)<4):
