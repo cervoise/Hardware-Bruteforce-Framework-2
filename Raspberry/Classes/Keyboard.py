@@ -67,20 +67,19 @@ class MouseAndKeyboard():
 		return False
 
 
-	def getX(int pos):
+	def getX(pos):
 		if pos % 3 == 0:
 			return 3;
 		return pos % 3
 
-	def getY(int pos):
-		if pos < 4
+	def getY(pos):
+		if pos < 4:
 			return 1
-		if pos < 7
+		if pos < 7:
 			return 2
-	return 3
-
+	
 	def mouseMove(X, Y):
-		for i in range(self.delta)
+		for i in range(self.delta):
 			self.i2cConnection.sendMouse(1, 1)
     			time.sleep(0.005)
 
@@ -93,7 +92,7 @@ class MouseAndKeyboard():
 		for i in range(len(path)):
 			pathArray.append(int(path[i]))
 	
-		self.mouseMove(self.getX(pathArray[0]), self.getY(pathArray[0])
+		self.mouseMove(self.getX(pathArray[0]), self.getY(pathArray[0]))
 		self.mouseClick()
 	
 		for i in range(pathArray - 1):
