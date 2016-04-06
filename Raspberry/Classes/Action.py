@@ -36,11 +36,8 @@ class Action:
 			if line[0] != '#':
 				lineCleaned = line.rstrip().lower()
 				
-				#Add the line to the array
-				if lineCleaned == "screenshot":
-					if no_screenshots is False:
-						self.actions_array.append(lineCleaned)
-				else:
+				#Add the line to the array (don't add the screenshot command if no_screenshots is true)
+				if not (lineCleaned == "screenshot" and no_screenshots):
 					self.actions_array.append(lineCleaned)
 				
 				#import WOL if needed
