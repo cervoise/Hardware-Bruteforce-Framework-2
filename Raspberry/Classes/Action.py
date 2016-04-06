@@ -72,7 +72,11 @@ class Action:
 						sys.exit(1)
 					self.wait = Action(wait_file, path_to_screenshots, no_screenshots, DEBUG)
 					self.attempt = int(lineCleaned.split(' ')[2])
-						
+				
+				#Check for delta
+				if lineCleaned.split(' ')[0] == "delta":
+					self.keyboard.setDelta(int(lineCleaned.split(' ')[1])
+
 				#Check for bruteforce
 				if lineCleaned.split(' ')[0] == "bruteforce":
 					self.bruteforce = True

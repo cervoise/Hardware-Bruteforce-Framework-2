@@ -6,8 +6,12 @@ import re
 #For test and debug
 class KeyboardTest:
 	def __init__(self):
+		self.delta = 0
 		return None
-		
+	
+	def setDelta(self, value):
+		self.delta = value
+
 	def press(self, string, delay):
 		for letter in string:
 			print letter
@@ -25,7 +29,11 @@ class MouseAndKeyboard():
 		if self.i2cConnection.testConnection() is False:
 			print "Something found on I2C, but no Arduino with the good sketch"
 			sys.exit(1)
-			
+		self.delta = 0
+
+	def setDelta(self, value):
+		self.delta = value
+
 	def press(self, string, delay):
 		for letter in string:
 			if self.isUnicode(letter) and not self.i2cConnection.canUnicode():
@@ -67,30 +75,30 @@ class MouseAndKeyboard():
 		return False
 
 
-	def getX(pos):
+	def getX(self, pos):
 		if pos % 3 == 0:
 			return 3;
 		return pos % 3
 
-	def getY(pos):
+	def getY(self, pos):
 		if pos < 4:
 			return 1
 		if pos < 7:
 			return 2
 	
-	def mouseMove(X, Y):
+	def mouseMove(self, X, Y):
 		for i in range(self.delta):
 			self.i2cConnection.sendMouse(1, 1)
     			time.sleep(0.005)
 
 
-	def mouseLeftClick():	
+	def mouseLeftClick(self):	
 		self.i2cConnection.sendMouseClick(0, 1)
 
-	def mouseLeftRelease():
+	def mouseLeftRelease(self):
 		self.i2cConnection.sendMouseClick(0, 0)
 
-	def drawPattern(path):
+	def drawPattern(self, path):
 		pathArray = []
 		for i in range(len(path)):
 			pathArray.append(int(path[i]))
