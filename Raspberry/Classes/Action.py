@@ -150,9 +150,9 @@ class Action:
 			elif valueSplit[0] == 'gpio':
 				#gpio pin time
 				pin = int(valueSplit[1])
-				time = int(valueSplit[2])/1000.
+				t = int(valueSplit[2])/1000.
 				path = os.path.dirname(os.path.realpath(__file__)) + "/scripts"
-				os.system("sudo python %s/gpio.py %d %f" % (path, pin, time))
+				os.system("sudo python %s/gpio.py %d %f" % (path, pin, t))
 
 		#If login changed since last try, we add a delay
 
