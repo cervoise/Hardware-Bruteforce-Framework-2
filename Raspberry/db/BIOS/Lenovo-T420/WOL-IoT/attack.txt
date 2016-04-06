@@ -1,8 +1,6 @@
-delay 50
 password
-delay 50
 enter
-delay 900
+delay 200
 screenshot
 delay 1000
 wait wait.txt 3
