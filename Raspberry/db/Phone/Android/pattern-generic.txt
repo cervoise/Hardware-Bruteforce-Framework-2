@@ -1,3 +1,5 @@
+mouseInit -200 150
+delta 200
 pattern
 delay 300
 enter

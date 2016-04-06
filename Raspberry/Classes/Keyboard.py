@@ -76,21 +76,30 @@ class MouseAndKeyboard():
 
 
 	def getX(self, pos):
+		pos = int(pos)
 		if pos % 3 == 0:
 			return 3;
 		return pos % 3
 
 	def getY(self, pos):
+		pos = int(pos)
 		if pos < 4:
 			return 1
 		if pos < 7:
 			return 2
-	
+		return 3
+
+	#Mouse move in the pattern (X and Y are position in the draw)	
 	def mouseMove(self, X, Y):
 		for i in range(self.delta):
-			self.i2cConnection.sendMouse(1, 1)
-    			time.sleep(0.005)
+			self.i2cConnection.sendMouse(X, Y)
+			time.sleep(0.005)
 
+	def mouseMoveAbsolute(self, X, Y):
+		for i in range(X):
+			self.i2cConnection.sendMouse(X/abs(X), 0)
+		for i in range(Y):
+			self.i2cConnection.sendMouse(0, Y/abs(Y))
 
 	def mouseLeftClick(self):	
 		self.i2cConnection.sendMouseClick(0, 1)
@@ -99,15 +108,18 @@ class MouseAndKeyboard():
 		self.i2cConnection.sendMouseClick(0, 0)
 
 	def drawPattern(self, path):
+		self.pressSpecial("enter")
 		pathArray = []
 		for i in range(len(path)):
 			pathArray.append(int(path[i]))
 	
 		self.mouseLeftRelease()
-		self.mouseMove(self.getX(pathArray[0]), self.getY(pathArray[0]))
+		self.mouseMove(self.getX(1) - self.getX(pathArray[0]), self.getY(1) - self.getY(pathArray[0]))
 		self.mouseLeftClick()
 	
-		for i in range(pathArray - 1):
+		for i in range(len(pathArray) - 1):
+			#print self.getY(pathArray[i])
+			#print self.getY(pathArray[i+1])
 			self.mouseMove(self.getX(pathArray[i+1]) - self.getX(pathArray[i]), self.getY(pathArray[i+1]) - self.getY(pathArray[i]))
 	
 		self.mouseLeftRelease()

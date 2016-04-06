@@ -57,6 +57,13 @@ class Action:
 				if lineCleaned.split(' ')[0] == "delaypassword":
 					self.delay = int(lineCleaned.split(' ')[1])
 				
+				#Check for initMouse
+				if lineCleaned.split(' ')[0] == "initmouse":
+					x = int(lineCLeaned.split(' ')[1])
+					y = int(lineCLeaned.split(' ')[2])
+					self.keyboard.pressSpecial('enter')
+					self.keyboard.mouseMoveAbsolute(x, y)
+
 				#Check for wait
 				if lineCleaned.split(' ')[0] == "wait":
 					#wait file attempts
@@ -75,7 +82,7 @@ class Action:
 				
 				#Check for delta
 				if lineCleaned.split(' ')[0] == "delta":
-					self.keyboard.setDelta(int(lineCleaned.split(' ')[1])
+					self.keyboard.setDelta(int(lineCleaned.split(' ')[1]))
 
 				#Check for bruteforce
 				if lineCleaned.split(' ')[0] == "bruteforce":
