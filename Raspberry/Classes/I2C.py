@@ -63,7 +63,7 @@ class I2C:
 	def sendMouse(self, x, y):
 		return self.sendI2C(self.CMD_MOUSE_MOVE, [x, y])
 	
-	def sendMouseClick(self):
-		return self.sendI2C(self.CMD_MOUSE_CLICK, [])
+	def sendMouseClick(self, button, state):
+		return self.sendI2C(self.CMD_MOUSE_CLICK, [button, state])
 		
 

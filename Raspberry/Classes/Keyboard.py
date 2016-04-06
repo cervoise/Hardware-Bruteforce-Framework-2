@@ -84,20 +84,24 @@ class MouseAndKeyboard():
     			time.sleep(0.005)
 
 
-	def mouseClick():	
-		self.i2cConnection.sendMouseClick()
+	def mouseLeftClick():	
+		self.i2cConnection.sendMouseClick(0, 1)
+
+	def mouseLeftRelease():
+		self.i2cConnection.sendMouseClick(0, 0)
 
 	def drawPattern(path):
 		pathArray = []
 		for i in range(len(path)):
 			pathArray.append(int(path[i]))
 	
+		self.mouseLeftRelease()
 		self.mouseMove(self.getX(pathArray[0]), self.getY(pathArray[0]))
-		self.mouseClick()
+		self.mouseLeftClick()
 	
 		for i in range(pathArray - 1):
 			self.mouseMove(self.getX(pathArray[i+1]) - self.getX(pathArray[i]), self.getY(pathArray[i+1]) - self.getY(pathArray[i]))
 	
-		self.mouseClick()
+		self.mouseLeftRelease()
 		self.mouseMove(1, 1)
 
