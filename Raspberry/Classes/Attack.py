@@ -47,7 +47,11 @@ class Attack:
 			login = self.logins.getNext()
 			while self.passwords.hasNext():
 				password = self.passwords.getNext()
-				self.pattern.doActions(password, login)
+				try:
+					self.pattern.doActions(password, login)
+				except IOError:
+					print "Current login/password when IOError occured: ", login, "/", password
+					raise
 
 	def doAttackWithWait(self):
 		trial = 0
@@ -56,4 +60,9 @@ class Attack:
 			while self.passwords.hasNext():
 				trial += 1
 				password = self.passwords.getNext()
-				self.pattern.doActions(password, login, trial)
+				try:
+					self.pattern.doActions(password, login, trial)
+				except IOError:
+					print "Current login/password when IOError occured: ", login, "/", password
+					raise
+
