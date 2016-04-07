@@ -35,6 +35,7 @@ class MouseAndKeyboard():
 		self.delta = value
 
 	def press(self, string, delay):
+		print string
 		for letter in string:
 			if self.isUnicode(letter) and not self.i2cConnection.canUnicode():
 				print "This Arduino cannot handle unicode char"
@@ -91,15 +92,43 @@ class MouseAndKeyboard():
 
 	#Mouse move in the pattern (X and Y are position in the draw)	
 	def mouseMove(self, X, Y):
-		for i in range(self.delta):
-			self.i2cConnection.sendMouse(X, Y)
-			time.sleep(0.005)
+		#print "Mouse move " + str(X) + " - " + str(Y)
+		if abs(X) != 2 and abs(Y) != 2:
+			for i in range(self.delta/20):
+				self.i2cConnection.sendMouse(20*X, 20*Y)
+		#If there is a movement in diag we cannot move X and Y togethers
+		#This can be done faster
+		elif abs(X) == 2:
+			for i in range(self.delta/20/2):
+				self.i2cConnection.sendMouse(0, 20*Y)
+			for i in range(self.delta/20):
+				self.i2cConnection.sendMouse(20*X, 0)
+			for i in range(self.delta/20/2):
+                                self.i2cConnection.sendMouse(0, 20*Y)
+		else:
+                        for i in range(self.delta/20/2):
+                                self.i2cConnection.sendMouse(20*X, 0)
+                        for i in range(self.delta/20):
+                                self.i2cConnection.sendMouse(0, 20*Y)
+                        for i in range(self.delta/20/2):
+                                self.i2cConnection.sendMouse(20*X, 0)
+
+		self.i2cConnection.sendMouse(X*self.delta%20, Y*self.delta%20)
+
 
 	def mouseMoveAbsolute(self, X, Y):
-		for i in range(X):
-			self.i2cConnection.sendMouse(X/abs(X), 0)
-		for i in range(Y):
-			self.i2cConnection.sendMouse(0, Y/abs(Y))
+		movement = 20
+		if abs(X) > abs(Y):
+			for i in range(abs(Y)/movement):
+				self.i2cConnection.sendMouse(movement*X/abs(X), movement*Y/abs(Y))
+			for i in range((abs(X)-abs(Y))/movement):
+				self.i2cConnection.sendMouse(movement*X/abs(X), 0)		
+		else:
+			for i in range(abs(X)/10):
+				self.i2cConnection.sendMouse(movement*X/abs(X), movement*Y/abs(Y))
+			for i in range((abs(Y)-abs(X))/movement):
+				self.i2cConnection.sendMouse(0, movement*Y/abs(Y))
+		self.i2cConnection.sendMouse(X%movement, Y%movement)
 
 	def mouseLeftClick(self):	
 		self.i2cConnection.sendMouseClick(0, 1)
@@ -108,20 +137,20 @@ class MouseAndKeyboard():
 		self.i2cConnection.sendMouseClick(0, 0)
 
 	def drawPattern(self, path):
+		print path
 		self.pressSpecial("enter")
 		pathArray = []
 		for i in range(len(path)):
 			pathArray.append(int(path[i]))
 	
 		self.mouseLeftRelease()
-		self.mouseMove(self.getX(1) - self.getX(pathArray[0]), self.getY(1) - self.getY(pathArray[0]))
+		self.mouseMove(self.getX(pathArray[0]) - self.getX(1), self.getY(pathArray[0]) - self.getY(1))
 		self.mouseLeftClick()
-	
+			
 		for i in range(len(pathArray) - 1):
-			#print self.getY(pathArray[i])
-			#print self.getY(pathArray[i+1])
 			self.mouseMove(self.getX(pathArray[i+1]) - self.getX(pathArray[i]), self.getY(pathArray[i+1]) - self.getY(pathArray[i]))
 	
 		self.mouseLeftRelease()
-		self.mouseMove(1, 1)
+		#we come back to the 1 1 point
+		self.mouseMove(1 - self.getX(pathArray[-1]), 1 - self.getY(pathArray[-1]))
 

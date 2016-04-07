@@ -1,9 +1,7 @@
-mouseInit -200 150
-delta 200
+initMouse -240 160
+delta 240
 pattern
-delay 300
-enter
-delay 3500
+delay 200
 screenshot
-delay 500
+delay 100
 wait wait-generic.txt 5

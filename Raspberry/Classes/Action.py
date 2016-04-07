@@ -59,8 +59,8 @@ class Action:
 				
 				#Check for initMouse
 				if lineCleaned.split(' ')[0] == "initmouse":
-					x = int(lineCLeaned.split(' ')[1])
-					y = int(lineCLeaned.split(' ')[2])
+					x = int(lineCleaned.split(' ')[1])
+					y = int(lineCleaned.split(' ')[2])
 					self.keyboard.pressSpecial('enter')
 					self.keyboard.mouseMoveAbsolute(x, y)
 
