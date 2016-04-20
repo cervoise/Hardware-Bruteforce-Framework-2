@@ -13,8 +13,12 @@ Targets and wordlists support:
 - Unicode only supported on Teensy 3.x
 
 Installation (Pi part):
-- configure i2c using raspi-config
-- apt-get install imagemagick fswebcam i2c-tools
+- Enable i2c:
+  - apt-get install i2c-tools libi2c-dev python-smbus
+  - sed -i 's/^blacklist i2c-bcm2708$/#&/g' /etc/modprobe.d/raspi-blacklist.conf
+  - echo -e "i2c-bcm2708\ni2c-dev" >> /etc/modules
+  - echo -e "\n#Enable i2c\ndtparam=i2c1=on\ndtparam=i2c_arm=on" >> /boot/config.txt
+- apt-get install imagemagick fswebcam
 - optionnal (for WOL): apt-get install scapy
 - optionnal (for remote analysis): apt-get install python-pip && pip install pyftpdlib
 - reboot
