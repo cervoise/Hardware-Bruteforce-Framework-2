@@ -33,14 +33,11 @@ Wiring:
 
 RPI B & Leonardo:
 
-![](Docs/Scheme/Leonardo-RaspberryB_bb_thumb.png)
-
-RPI B+ & Leonardo:
-
-![](Docs/Scheme/wiring_RPI-Leonardo_thumb.png)
+![](Docs/Scheme/Raspberry-ArduinoTeensy/wiring_RPI-Leonardo_bb_thumb.png)
 
 RPI B+ & Teensy 3.0:
 
-![](Docs/Scheme/wiring_RPI-Teensy30_thumb.png)
+![](Docs/Scheme/Raspberry-ArduinoTeensy/wiring_RPI-Teensy30_thumb.png)
 
+More wiring examples can be found in directory Docs/Scheme/Raspberry-ArduinoTeensy/
 
