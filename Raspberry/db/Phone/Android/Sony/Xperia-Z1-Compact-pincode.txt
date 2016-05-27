@@ -1,0 +1,9 @@
+#Tested on a Sony Xperia Z1 Compact with Android 5.1.1
+passwordDelay 50
+bruteforce numeric 4-6
+delay 100
+enter
+delay 300
+screenshot
+delay 500
+wait ../wait-generic.txt 5
