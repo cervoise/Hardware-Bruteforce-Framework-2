@@ -18,7 +18,7 @@ Installation (Pi part):
   - sed -i 's/^blacklist i2c-bcm2708$/#&/g' /etc/modprobe.d/raspi-blacklist.conf
   - echo -e "i2c-bcm2708\ni2c-dev" >> /etc/modules
   - echo -e "\n#Enable i2c\ndtparam=i2c1=on\ndtparam=i2c_arm=on" >> /boot/config.txt
-- apt-get install imagemagick fswebcam
+- apt-get install git imagemagick fswebcam
 - optionnal (for WOL): apt-get install scapy
 - optionnal (for remote analysis): apt-get install python-pip && pip install pyftpdlib
 - reboot
