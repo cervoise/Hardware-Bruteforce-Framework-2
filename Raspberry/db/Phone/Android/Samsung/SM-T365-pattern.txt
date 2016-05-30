@@ -1,0 +1,8 @@
+#SM-T365 with Android 4.4.4
+#Vertical layout
+initMouse 250 125
+delta 125
+pattern
+delay 900
+screenshot
+wait wait-generic.txt 5
