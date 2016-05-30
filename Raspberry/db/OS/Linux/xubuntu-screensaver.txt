@@ -2,3 +2,4 @@
 password
 enter
 delay 2250
+screenshot
