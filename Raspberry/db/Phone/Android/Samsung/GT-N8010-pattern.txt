@@ -1,0 +1,5 @@
+#Galaxy Notes 10.1 (GT-N8010) with Android 4.1.2
+delta 120
+pattern
+delay 1000
+screenshot
