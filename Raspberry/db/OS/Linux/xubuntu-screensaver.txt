@@ -1,0 +1,4 @@
+//Xubuntu 14.04
+password
+enter
+delay 2250
