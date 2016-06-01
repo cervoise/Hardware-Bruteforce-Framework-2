@@ -3,5 +3,4 @@ delta 240
 pattern
 delay 200
 screenshot
-delay 100
 wait wait-generic.txt 5

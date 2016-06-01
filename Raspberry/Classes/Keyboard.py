@@ -92,32 +92,32 @@ class MouseAndKeyboard():
 
 	#Mouse move in the pattern (X and Y are position in the draw)	
 	def mouseMove(self, X, Y):
+		movement = 40
 		#print "Mouse move " + str(X) + " - " + str(Y)
 		if abs(X) != 2 and abs(Y) != 2:
-			for i in range(self.delta/20):
-				self.i2cConnection.sendMouse(20*X, 20*Y)
+			for i in range(self.delta/movement):
+				self.i2cConnection.sendMouse(movement*X, movement*Y)
 		#If there is a movement in diag we cannot move X and Y togethers
 		#This can be done faster
 		elif abs(X) == 2:
-			for i in range(self.delta/20/2):
-				self.i2cConnection.sendMouse(0, 20*Y)
-			for i in range(self.delta/20):
-				self.i2cConnection.sendMouse(20*X, 0)
-			for i in range(self.delta/20/2):
-                                self.i2cConnection.sendMouse(0, 20*Y)
+			for i in range(self.delta/movement/2):
+				self.i2cConnection.sendMouse(0, movement*Y)
+			for i in range(self.delta/movement):
+				self.i2cConnection.sendMouse(movement*X, 0)
+			for i in range(self.delta/movement/2):
+                                self.i2cConnection.sendMouse(0, movement*Y)
 		else:
-                        for i in range(self.delta/20/2):
-                                self.i2cConnection.sendMouse(20*X, 0)
-                        for i in range(self.delta/20):
-                                self.i2cConnection.sendMouse(0, 20*Y)
-                        for i in range(self.delta/20/2):
-                                self.i2cConnection.sendMouse(20*X, 0)
+                        for i in range(self.delta/movement/2):
+                                self.i2cConnection.sendMouse(movement*X, 0)
+                        for i in range(self.delta/movement):
+                                self.i2cConnection.sendMouse(0, movement*Y)
+                        for i in range(self.delta/movement/2):
+                                self.i2cConnection.sendMouse(movement*X, 0)
 
-		self.i2cConnection.sendMouse(X*self.delta%20, Y*self.delta%20)
-
+		self.i2cConnection.sendMouse(X*self.delta%movement, Y*self.delta%movement)
 
 	def mouseMoveAbsolute(self, X, Y):
-		movement = 20
+		movement = 40
 		if abs(X) > abs(Y):
 			for i in range(abs(Y)/movement):
 				self.i2cConnection.sendMouse(movement*X/abs(X), movement*Y/abs(Y))

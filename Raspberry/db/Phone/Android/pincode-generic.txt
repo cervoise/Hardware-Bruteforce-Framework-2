@@ -2,7 +2,6 @@ passwordDelay 300
 bruteforce numeric 4-6
 delay 300
 enter
-delay 3500
+delay 2000
 screenshot
-delay 500
 wait wait-generic.txt 5
